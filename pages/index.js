@@ -3,6 +3,10 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+    let x = 15
+    x = new Date()
+
+
   return (
     <div>
       <Head>
@@ -12,8 +16,14 @@ export default function Home() {
       </Head>
       {/*----------------------------------------------------------------*/}
       <main className={styles.main}>
-          Думаю тут будет описание и введение в теорему и т.д.
-          
+          Думаю тут будет описание и введение в теорему
+
+          <p>
+              {/*kehkerhek*/}
+
+              {x.getDate()}
+
+          </p>
 
 
 
