@@ -3,7 +3,8 @@
 }
 
 .main {
-
+  margin-left: 17%;
+  overflow-x: hidden;
 }
 
 .footer {
@@ -34,9 +35,7 @@
 }
 
 .title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
+  margin-top: -32px;
 }
 
 .title,

@@ -10,11 +10,11 @@ function MyApp({ Component, pageProps }) {
           <Link href={"/"}>
             <a >Введение в теорему</a>
           </Link>
-          <Link href={"/"}>
+          <Link href={"/lvl1"}>
             <a >Критичесский граф</a>
           </Link>
           <Link href={"/"}>
-            <a >Дальше идут вроде как игры</a>
+            <a >Дальше идут вроде </a>
           </Link>
 
 
