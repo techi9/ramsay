@@ -7,6 +7,29 @@
   overflow-x: hidden;
 }
 
+.buttonNext{
+  min-width: 20%;
+  font-size: 25px;
+  font-family:"Alumni Sans",SansSerif;
+  font-weight: 600;
+  flex-grow: 1;
+  border: none;
+  border-radius: 6px;
+  color: #444444;
+  background: #a9a9a9;
+  margin: 4px 8px 4px 0px;
+  height: 40px;
+  float: right;
+  transition: 200ms;
+}
+
+.buttonNext:hover{
+  border-radius: 20px;
+  color: #ffffff;
+  text-shadow: rgba(43, 43, 43, 0.76) 0px 1px 10px;
+}
+
+
 .footer {
   display: flex;
   flex: 1;

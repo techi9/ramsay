@@ -3,11 +3,17 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from "next/link";
 import sidebar from "../styles/sidebar.module.css";
+import {router} from "next/client";
+import {useRouter} from "next/router";
+
+
+function nextt(e){
+    e.preventDefault()
+    router.push("/lvl1")
+}
 
 export default function Home() {
-    let x = 15
-    x = new Date()
-
+    const router = useRouter()
 
   return (
     <div>
@@ -21,7 +27,7 @@ export default function Home() {
 
           <div className={styles.title}>
               <h1 align={"left"}>
-                  <font size={+6} color={"#808080"} FACE={"century schoolbook"}>
+                  <font size={+6} color={"#808080"} face={"century schoolbook"}>
                       <strong>Рамсеевская теория графов</strong>
                   </font>
 
@@ -75,13 +81,12 @@ export default function Home() {
           </font>
 
           {/*<div className={<button disabled></button>}>*/}
-          <div>
-              <Link href={"/lvl1"}>
-                  <a >продолжить</a>
-              </Link>
-          </div>
+
+          <input className={styles.buttonNext} type="button" value="Продолжить" onClick={nextt}/>
+
 
           <body>
+
 
           </body>
 
