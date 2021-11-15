@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Link from "next/link";
+import sidebar from "../styles/sidebar.module.css";
 
 export default function Home() {
     let x = 15
@@ -71,6 +73,14 @@ export default function Home() {
               <img src={"/G3.png"} hspace={"180px"} height={"250px"}/>
               <br/> <br/>
           </font>
+
+          {/*<div className={<button disabled></button>}>*/}
+          <div>
+              <Link href={"/lvl1"}>
+                  <a >продолжить</a>
+              </Link>
+          </div>
+
           <body>
 
           </body>

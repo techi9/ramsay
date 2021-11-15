@@ -19,7 +19,7 @@ export default function Home() {
                 <div className={styles.title}>
                     <h1 align={"left"}>
                         <font size={+6} color={"#808080"} FACE={"century schoolbook"}>
-                            <strong>Рамсеевская теория графов</strong>
+                            <strong>Критический граф</strong>
                         </font>
 
                     </h1>
