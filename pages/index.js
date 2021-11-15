@@ -3,7 +3,6 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from "next/link";
 import sidebar from "../styles/sidebar.module.css";
-import {router} from "next/client";
 import {useRouter} from "next/router";
 
 
@@ -82,7 +81,7 @@ export default function Home() {
 
           {/*<div className={<button disabled></button>}>*/}
 
-          <input className={styles.buttonNext} type="button" value="Продолжить" onClick={nextt}/>
+          <input className={styles.buttonNext} type="button" value="Продолжить" onClick={() => router.push('/lvl1')}/>
 
 
           <body>
