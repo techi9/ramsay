@@ -6,11 +6,6 @@ import sidebar from "../styles/sidebar.module.css";
 import {useRouter} from "next/router";
 
 
-function nextt(e){
-    e.preventDefault()
-    router.push("/lvl1")
-}
-
 export default function Home() {
     const router = useRouter()
 
@@ -78,16 +73,11 @@ export default function Home() {
               <img src={"/G3.png"} hspace={"180px"} height={"250px"}/>
               <br/> <br/>
           </font>
-
           {/*<div className={<button disabled></button>}>*/}
+
 
           <input className={styles.buttonNext} type="button" value="Продолжить" onClick={() => router.push('/lvl1')}/>
 
-
-          <body>
-
-
-          </body>
 
 
       </main>
