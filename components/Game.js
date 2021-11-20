@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import Vertex from "./Vertex";
+import Line from "./Line";
+import styles from '../styles/colorSelector.module.css'
 
 class Game extends React.Component {
 
@@ -79,15 +81,28 @@ class Game extends React.Component {
 
     render() {
 
-        let vertexList = [<Vertex x = "40" y = "10" key = "1"/>, <Vertex x = "45" y = "10" key = "2"/>]
+        let vertexesToRender = []
+        this.state.vertexList.forEach(element => vertexesToRender.push(element.vertex))
+
+        let linesToRender = []
+        this.state.lineList.forEach(element => linesToRender.push(element.line))
 
         return (
             <div>
+                <input className={styles.buttonRed} type="button" value=" я кнопка " onClick={this.handleClickRedButton}
+                       style={{"border-color": this.state.curColor === "red" ? "#151414" : "#d51717" }}/>
+                <input className={styles.buttonBlue} type="button" value=" я тоже кнопка " onClick={this.handleClickBlueButton}
+                       style={{"border-color": this.state.curColor === "blue" ? "#151414" : "#1776d5"}}/>
                 <svg viewBox="0 0 100 47" xmlns="http://www.w3.org/2000/svg">
-                    {/*<circle cx="50%" cy="50%" r="4" fill={this.state.color} onClick={this.handleClick}/>*/}
-                    {vertexList}
+
+                    {linesToRender}
+                    {vertexesToRender}
+
                 </svg>
+
+
             </div>
+
         );
     }
 }

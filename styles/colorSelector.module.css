@@ -1,0 +1,46 @@
+.content{
+    animation: ease-in-out;
+}
+
+.buttonRed{
+    min-width: 20%;
+    font-size: 25px;
+    border-width: 7px;
+    font-family:"Alumni Sans",SansSerif;
+    font-weight: 600;
+    flex-grow: 1;
+    border-radius: 6px;
+
+    color: #151414;
+    background: #d51717;
+    margin: 4px 8px 4px 0px;
+    height: 40px;
+    float: right;
+    transition: 200ms;
+}
+
+.buttonRed:hover{
+    /*border-radius: 20px;*/
+    color: #ffffff;
+}
+
+.buttonBlue{
+    min-width: 20%;
+    font-size: 25px;
+    border-width: 7px;
+    font-family:"Alumni Sans",SansSerif;
+    font-weight: 600;
+    flex-grow: 1;
+    border-radius: 6px;
+    color: #151414;
+    background: #1776d5;
+    margin: 4px 8px 4px 0px;
+    height: 40px;
+    float: right;
+    transition: 200ms;
+}
+
+.buttonBlue:hover{
+    /*border-radius: 20px;*/
+    color: #ffffff;
+}
