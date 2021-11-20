@@ -8,6 +8,6 @@ export default function Home() {
     let x = 15
     x = new Date()
     return (
-        <Game/>
+        <Game n = "6"/>
     )
 }
