@@ -1,6 +1,7 @@
 import React, {Component} from "react";
+import Vertex from "./Vertex";
 
-class ColoredRect extends React.Component {
+class Game extends React.Component {
     state = {
         color1: "green",
         color2: "green",
@@ -22,17 +23,18 @@ class ColoredRect extends React.Component {
         });
     };
     render() {
+
+        let vertexList = [<Vertex x = "40" y = "10" key = "1"/>, <Vertex x = "45" y = "10" key = "2"/>]
+
         return (
             <div>
                 <svg viewBox="0 0 100 47" xmlns="http://www.w3.org/2000/svg">
                     {/*<circle cx="50%" cy="50%" r="4" fill={this.state.color} onClick={this.handleClick}/>*/}
-                    <line x1="40" y1="20" x2="60" y2="20" stroke={this.state.color1} onClick={this.handleClick1}/>
-                    <line x1="40" y1="20" x2="50" y2="30" stroke={this.state.color2} onClick={this.handleClick2}/>
-                    <line x1="50" y1="30" x2="60" y2="20" stroke={this.state.color3} onClick={this.handleClick3}/>
+                    {vertexList}
                 </svg>
             </div>
         );
     }
 }
 
-export default ColoredRect
+export default Game

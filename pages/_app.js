@@ -17,9 +17,10 @@ function MyApp({ Component, pageProps }) {
             <a >Дальше идут вроде </a>
           </Link>
 
-
         </div>
+
         <Component {...pageProps} />
+
       </div>
   )
 }
