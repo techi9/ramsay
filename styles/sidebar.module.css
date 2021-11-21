@@ -10,6 +10,26 @@
     overflow: auto;
 }
 
+.unselect{
+
+}
+
+.selected{
+    /*top: -30px;*/
+    opacity: 100%;
+
+    flex-grow: 1;
+    border: none;
+    border-radius: 6px;
+    color: #444444;
+    background: #a9a9a9;
+
+
+    width:100%;
+
+    transition: 200ms;
+}
+
 .sidebar:hover{
     width: 16%;
 }
@@ -21,18 +41,21 @@
     padding: 16px;
     text-decoration: none;
     transition: background-color 250ms;
+    border-radius: 6px;
 }
 
 /* Активная/текущая ссылка */
 .sidebar a.active {
     background-color: #4CAF50;
     color: white;
+    border-radius: 6px;
 }
 
 /* Ссылки при наведении мыши */
 .sidebar a:hover:not(.active) {
     background-color: #949494;
     color: #000000;
+    border-radius: 6px;
     transition: color 500ms;
 }
 

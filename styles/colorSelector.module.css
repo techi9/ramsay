@@ -1,12 +1,23 @@
 .content{
-    animation: ease-in-out;
+    /*margin-left: 16.5%;*/
 }
 
-.buttonRed{
+.rules{
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+    /*text-align: center;*/
+    text-indent: 10px;
+    text-align: justify;
+    width: 42%;
+    font-size: 20px;
+}
+
+.buttonLoose{
     min-width: 20%;
     font-size: 25px;
     border-width: 7px;
-    font-family:"Alumni Sans",SansSerif;
+
     font-weight: 600;
     flex-grow: 1;
     border-radius: 6px;
@@ -14,6 +25,47 @@
     color: #151414;
     background: #d51717;
     margin: 4px 8px 4px 0px;
+    height: 40px;
+    float: right;
+    transition: 200ms;
+}
+
+.buttonRetry{
+    position: relative;
+
+    min-width: 8%;
+    font-size: 25px;
+
+    font-weight: 500;
+    flex-grow: 1;
+
+    border: none;
+
+    color: #151414;
+    background: #656565;
+
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+
+    float: right;
+    transition: 200ms;
+}
+
+
+.buttonRed{
+
+    min-width: 15%;
+    font-size: 25px;
+    border-width: 7px;
+
+    font-family:"Alumni Sans",SansSerif;
+    font-weight: 550;
+    border-radius: 6px;
+
+    color: #151414;
+    background: #d51717;
+    margin: 2% 8px 4px 7.5%;
     height: 40px;
     transition: 200ms;
 }
@@ -35,7 +87,7 @@
     background: #1776d5;
     margin: 4px 8px 4px 0px;
     height: 40px;
-    float: right;
+
     transition: 200ms;
 }
 

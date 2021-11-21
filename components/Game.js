@@ -1,13 +1,13 @@
-import React, {Component} from "react";
+import React from "react";
 import Vertex from "./Vertex";
 import Line from "./Line";
 import styles from '../styles/colorSelector.module.css'
+import Scroll from 'react-scroll'
 
 class Game extends React.Component {
 
     vertexList = []
     lineList = []
-
 
     constructor(props) {
         super(props);
@@ -162,12 +162,34 @@ class Game extends React.Component {
         this.state.lineList.forEach(element => linesToRender.push(element.line))
 
         return (
-            <div>
-                <input className={styles.buttonRed} type="button" value=" я кнопка " onClick={this.handleClickRedButton}
+            <div className={styles.content}>
+
+                <div className={styles.rules}>
+                    <p>
+                        <font size={+7} color={"#646363"} face={"century schoolbook"}>
+                            <strong>Первая головоломка</strong>
+                        </font>
+                        <br/>
+                        <br/>
+                        Перед Вами полный граф К6, состоящий из шести вершин,
+                        каждая из котрых соединена со всеми остальными.
+                        <br/>  <br/>
+                        Есть два цвета: синий и красный. Вы можете выбрать цвет, нажав
+                        на соответсвующую кнопку, расположенную слева.
+                        <br/> <br/>
+                        Задача очень проста: Вам нужно раскрасить рёбра этого графа двумя цветами
+                        так, чтобы <strong>не получились одноцветные треугольники</strong>.
+
+
+
+                    </p>
+                    <input className={styles.buttonRetry} type="button" onClick={this.retryButton}/>
+                </div>
+                <input className={styles.buttonRed} type="button" value="  " onClick={this.handleClickRedButton}
                        style={{"border-color": this.state.curColor === "red" ? "#151414" : "#d51717" }}/>
-                <input className={styles.buttonBlue} type="button" value=" я тоже кнопка " onClick={this.handleClickBlueButton}
+                <input className={styles.buttonBlue} type="button" value="  " onClick={this.handleClickBlueButton}
                        style={{"border-color": this.state.curColor === "blue" ? "#151414" : "#1776d5"}}/>
-                <svg viewBox="0 0 100 47" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="50 5 100 48" xmlns="http://www.w3.org/2000/svg">
 
                     {linesToRender}
                     {vertexesToRender}
@@ -175,6 +197,20 @@ class Game extends React.Component {
                 </svg>
 
 
+                <div className={styles.looseText}>
+                    <p>
+                        A lot of textA lot of textA lot of textA lot of textA lot of
+                        <br/>
+                        A lot of textA lot of textA lot of textA lot of textA lot of
+                        <br/>
+                        A lot of textA lot of textA lot of textA lot of textA lot of
+                        <br/>
+                        A lot of textA lot of textA lot of textA lot of textA lot of
+                        <br/>
+                        A lot of textA lot of textA lot of textA lot of textA lot of
+                        <br/>
+                    </p>
+                </div>
             </div>
 
         );
