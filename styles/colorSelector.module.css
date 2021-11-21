@@ -15,7 +15,6 @@
     background: #d51717;
     margin: 4px 8px 4px 0px;
     height: 40px;
-    float: right;
     transition: 200ms;
 }
 
@@ -25,11 +24,11 @@
 }
 
 .buttonBlue{
-    min-width: 20%;
+    min-width: 15%;
     font-size: 25px;
     border-width: 7px;
     font-family:"Alumni Sans",SansSerif;
-    font-weight: 600;
+    font-weight: 550;
     flex-grow: 1;
     border-radius: 6px;
     color: #151414;

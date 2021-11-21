@@ -13,7 +13,7 @@ class Game extends React.Component {
         super(props);
 
         let angles = this.props.n , radius = 17
-        let xCenter = 50, yCenter = 23.5
+        let xCenter = 73, yCenter = 25
         for (let i=0; i<angles; i++)
         {
             let angle = 2 * 3.14 / angles * i
@@ -27,9 +27,9 @@ class Game extends React.Component {
         }
         let lineIndex = 0
         let angles2 = this.props.n
-        for(let i=0; i<angles; i++)
+        for(let i=0; i<angles-1; i++)
         {
-            for(let j=0; j<angles2; j++)
+            for(let j=0; j<angles2-1; j++)
             {
                 this.lineList.push({
                     'x1': this.vertexList[this.vertexList.length - j-1].x,
@@ -37,7 +37,11 @@ class Game extends React.Component {
                     'x2': this.vertexList[i].x,
                     'y2': this.vertexList[i].y,
                     'line': <Line x1={this.vertexList[this.vertexList.length - j-1].x} y1={this.vertexList[this.vertexList.length - j-1].y} x2={this.vertexList[i].x} y2={this.vertexList[i].y}
-                                   onClick = {this.handleClick} vertex1 = {this.vertexList[this.vertexList.length - j-1]} vertex2 = {this.vertexList[i]} color={"gray"} index = {lineIndex}/>
+                                   onClick = {this.handleClick} vertex1 = {this.vertexList[this.vertexList.length - j-1]} vertex2 = {this.vertexList[i]} color={"gray"} index = {lineIndex}/>,
+
+                    'color': "gray",
+                    'vertex1': this.vertexList[this.vertexList.length - j-1],
+                    'vertex2': this.vertexList[i]
                 })
                 lineIndex++
             }
@@ -47,19 +51,99 @@ class Game extends React.Component {
         this.state = {
             vertexList : this.vertexList,
             lineList: this.lineList,
-            curColor : "red"
+            curColor : "red",
+            game: true
         }
 
 
     }
 
+    getLine(v1, v2){
+        for(let i in this.lineList){
+            if(this.lineList[i].vertex1 === v1 && this.lineList[i].vertex2 === v2 ||
+                this.lineList[i].vertex1 === v2 && this.lineList[i].vertex2 === v1) {
+                return this.lineList[i];
+            }
+        }
+        throw "line not found"
+    }
+
+    checkColor(v1, v2, color){
+        for(let i in this.lineList){
+            if((this.lineList[i].vertex1 === v1 && this.lineList[i].vertex2 === v2 ||
+                this.lineList[i].vertex1 === v2 && this.lineList[i].vertex2 === v1) && this.lineList[i].color === color){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+    check = (line) => {
+        let tmpColor = line.color
+        for(let i in this.vertexList){
+            if(this.checkColor(this.vertexList[i], line.vertex1, tmpColor) &&
+                this.checkColor(this.vertexList[i], line.vertex2, tmpColor)){
+                this.showLooseInfo()
+                console.log("u lost")
+                return;
+            }
+        }
+    }
+
+    showLooseInfo = () => {
+
+        let scroll = Scroll.animateScroll
+        scroll.scrollToBottom({
+            duration: 1500,
+                delay: 100,
+                smooth: true})
+
+
+        this.setState({
+            game : false
+        })
+    }
+
+
     handleClick = index => vertex1 => vertex2 =>  {
 
+        if(this.lineList[index].color !== "gray") return;
 
         this.lineList[index].line =
             <Line x1={this.lineList[index].x1} y1={this.lineList[index].y1} x2={this.lineList[index].x2} y2={this.lineList[index].y2}
               onClick = {this.handleClick} vertex1 = {vertex1} vertex2 = {vertex2} color={this.state.curColor} index = {index}/>;
+        this.lineList[index].color = this.state.curColor
 
+        this.setState({
+            vertexList : this.vertexList,
+            lineList: this.lineList
+        })
+
+        this.check(this.lineList[index])
+
+    };
+
+    handleClickRedButton = () => {
+
+        this.setState({curColor : "red"})
+        console.log(this.lineList)
+    }
+
+    handleClickBlueButton = () => {
+        this.setState({curColor : "blue"})
+    }
+
+    retryButton = () => {
+
+        for(let index in this.lineList){
+            this.lineList[index].line =
+                <Line x1={this.lineList[index].x1} y1={this.lineList[index].y1} x2={this.lineList[index].x2} y2={this.lineList[index].y2}
+                      onClick = {this.handleClick} vertex1 = {this.lineList[index].vertex1} vertex2 = {this.lineList[index].vertex2}
+                        color={"gray"} index = {this.lineList[index].index}/>;
+
+        }
 
         this.setState({
             vertexList : this.vertexList,
@@ -67,16 +151,6 @@ class Game extends React.Component {
         })
 
 
-        console.log(this.curColor)
-    };
-
-    handleClickRedButton = () => {
-
-        this.setState({curColor : "red"})
-    }
-
-    handleClickBlueButton = () => {
-        this.setState({curColor : "blue"})
     }
 
     render() {
