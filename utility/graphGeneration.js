@@ -1,4 +1,4 @@
-import Line from "./Line";
+import Line from "../components/Line";
 import Vertex from "../components/Vertex";
 
 function graphGeneration(list, n, radius, xCenter, yCenter, handleClick) {

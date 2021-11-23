@@ -8,8 +8,8 @@ import {useRouter} from "next/router";
 
 export default function Home(props) {
     const router = useRouter()
-    console.log("UPDATEEEEE")
-    props.PageUpdated(0)
+
+
   return (
     <div>
       <Head>

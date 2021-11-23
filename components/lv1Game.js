@@ -93,17 +93,10 @@ class Game extends React.Component {
     }
 
     showLooseInfo = () => {
-
-        let scroll = Scroll.animateScroll
-        scroll.scrollToBottom({
-            duration: 1500,
-                delay: 100,
-                smooth: true})
-
-
         this.setState({
             game : false
         })
+        this.props.onGiveUp()
     }
 
 

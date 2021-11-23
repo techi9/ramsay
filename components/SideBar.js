@@ -9,12 +9,11 @@ class SideBar extends React.Component {
         super(props);
 
         this.state = {
-            selected : this.props.index
+            selected : 1
         }
 
     }
 
-    sideBarChanged = this.props.changed
 
     handleClick = (i) => {
         this.setState({
