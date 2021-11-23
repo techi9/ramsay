@@ -109,8 +109,6 @@ class Game extends React.Component {
 
     handleClick = index => vertex1 => vertex2 =>  {
 
-        if(this.lineList[index].color !== "gray") return;
-
         this.lineList[index].line =
             <Line x1={this.lineList[index].x1} y1={this.lineList[index].y1} x2={this.lineList[index].x2} y2={this.lineList[index].y2}
               onClick = {this.handleClick} vertex1 = {vertex1} vertex2 = {vertex2} color={this.state.curColor} index = {index}/>;
@@ -138,10 +136,11 @@ class Game extends React.Component {
     retryButton = () => {
 
         for(let index in this.lineList){
+            this.lineList[index].color = "gray"
             this.lineList[index].line =
                 <Line x1={this.lineList[index].x1} y1={this.lineList[index].y1} x2={this.lineList[index].x2} y2={this.lineList[index].y2}
                       onClick = {this.handleClick} vertex1 = {this.lineList[index].vertex1} vertex2 = {this.lineList[index].vertex2}
-                        color={"gray"} index = {this.lineList[index].index}/>;
+                        color={this.lineList[index].color} index = {this.lineList[index].index}/>;
 
         }
 
@@ -183,7 +182,7 @@ class Game extends React.Component {
 
 
                     </p>
-                    <input className={styles.buttonRetry} type="button" onClick={this.retryButton}/>
+                    <input className={styles.buttonRetry} src="/retryButton.png" type="image" onClick={this.retryButton}/>
                 </div>
                 <input className={styles.buttonRed} type="button" value="  " onClick={this.handleClickRedButton}
                        style={{"border-color": this.state.curColor === "red" ? "#151414" : "#d51717" }}/>
