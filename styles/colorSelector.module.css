@@ -16,18 +16,23 @@
 .buttonLoose{
     min-width: 20%;
     font-size: 25px;
-    border-width: 7px;
-
+    font-family:"Alumni Sans",SansSerif;
     font-weight: 600;
     flex-grow: 1;
-    border-radius: 6px;
-
-    color: #151414;
-    background: #d51717;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    background: #232323;
     margin: 4px 8px 4px 0px;
     height: 40px;
-    float: right;
+    float: initial;
     transition: 200ms;
+}
+
+.buttonLoose:hover{
+    border-radius: 20px;
+    color: #ffffff;
+    background: #575757;
 }
 
 .buttonRetry{

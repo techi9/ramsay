@@ -3,50 +3,22 @@ import Vertex from "./Vertex";
 import Line from "./Line";
 import styles from '../styles/colorSelector.module.css'
 import Scroll from 'react-scroll'
+import graphGeneration from '/utility/graphGeneration'
 
-class Game extends React.Component {
 
+
+class Lv1Game extends React.Component {
     vertexList = []
     lineList = []
+    list = [this.vertexList, this.lineList]
 
     constructor(props) {
         super(props);
 
-        let angles = this.props.n , radius = 17
-        let xCenter = 73, yCenter = 25
-        for (let i=0; i<angles; i++)
-        {
-            let angle = 2 * Math.PI / angles * i
-            this.vertexList.push({
-                'x': xCenter + Math.cos(angle)*radius,
-                'y': yCenter + Math.sin(angle)*radius,
-                'vertex': <Vertex x = {xCenter + Math.cos(angle)*radius} y = {yCenter + Math.sin(angle)*radius} key = {i+1}/>,
-                'index' : i,
-                'connectedVertex': []
-            })
-        }
-        let lineIndex = 0
-        let angles2 = this.props.n
-        for(let i=0; i<angles-1; i++)
-        {
-            for(let j=0; j<angles2-1; j++)
-            {
-                this.lineList.push({
-                    'x1': this.vertexList[this.vertexList.length - j-1].x,
-                    'y1': this.vertexList[this.vertexList.length - j-1].y,
-                    'x2': this.vertexList[i].x,
-                    'y2': this.vertexList[i].y,
-                    'line': <Line x1={this.vertexList[this.vertexList.length - j-1].x} y1={this.vertexList[this.vertexList.length - j-1].y} x2={this.vertexList[i].x} y2={this.vertexList[i].y}
-                                   onClick = {this.handleClick} vertex1 = {this.vertexList[this.vertexList.length - j-1]} vertex2 = {this.vertexList[i]} color={"gray"} index = {lineIndex}/>,
-
-                    'color': "gray",
-                    'vertex1': this.vertexList[this.vertexList.length - j-1],
-                    'vertex2': this.vertexList[i]
-                })
-                lineIndex++
-            }
-            angles2 = angles2-1
-        }
+        let radius = 17, xCenter = 73, yCenter = 25
+        this.list = graphGeneration(this.list, this.props.n, radius, xCenter, yCenter, this.handleClick)
+        this.vertexList = this.list[0]
+        this.lineList = this.list[1]
 
         this.state = {
             vertexList : this.vertexList,
@@ -77,8 +49,6 @@ class Game extends React.Component {
         }
         return false;
     }
-
-
 
     check = (line) => {
         let tmpColor = line.color
@@ -157,30 +127,17 @@ class Game extends React.Component {
             <div className={styles.content}>
 
                 <div className={styles.rules}>
-                    <p>
-                        <font size={+7} color={"#646363"} face={"century schoolbook"}>
-                            <strong>Первая головоломка</strong>
-                        </font>
-                        <br/>
-                        <br/>
-                        Перед Вами полный граф К6, состоящий из шести вершин,
-                        каждая из котрых соединена со всеми остальными.
-                        <br/>  <br/>
-                        Есть два цвета: синий и красный. Вы можете выбрать цвет, нажав
-                        на соответсвующую кнопку, расположенную слева.
-                        <br/> <br/>
-                        Задача очень проста: Вам нужно раскрасить рёбра этого графа двумя цветами
-                        так, чтобы <strong>не получились одноцветные треугольники</strong>.
-
-
-
-                    </p>
+                    {this.props.text()}
                     <input className={styles.buttonRetry} src="/retryButton.png" type="image" onClick={this.retryButton}/>
+                    {this.props.withGiveUpButton ? <input className={styles.buttonLoose} type="button" value="посмотреть решение"
+                            onClick={this.showLooseInfo}/> : ''}
                 </div>
+
                 <input className={styles.buttonRed} type="button" value="  " onClick={this.handleClickRedButton}
                        style={{"border-color": this.state.curColor === "red" ? "#151414" : "#d51717" }}/>
                 <input className={styles.buttonBlue} type="button" value="  " onClick={this.handleClickBlueButton}
                        style={{"border-color": this.state.curColor === "blue" ? "#151414" : "#1776d5"}}/>
+
                 <svg viewBox="50 5 100 48" xmlns="http://www.w3.org/2000/svg">
 
                     {linesToRender}
@@ -188,25 +145,10 @@ class Game extends React.Component {
 
                 </svg>
 
-
-                { !this.state.game ? <div className={styles.looseText}>
-                    <p>
-                        A lot of textA lot of textA lot of textA lot of textA lot of
-                        <br/>
-                        A lot of textA lot of textA lot of textA lot of textA lot of
-                        <br/>
-                        A lot of textA lot of textA lot of textA lot of textA lot of
-                        <br/>
-                        A lot of textA lot of textA lot of textA lot of textA lot of
-                        <br/>
-                        A lot of textA lot of textA lot of textA lot of textA lot of
-                        <br/>
-                    </p>
-                </div> : ''}
             </div>
 
         );
     }
 }
 
-export default Game
+export default Lv1Game

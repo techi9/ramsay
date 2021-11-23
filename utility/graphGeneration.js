@@ -39,6 +39,7 @@ function graphGeneration(list, n, radius, xCenter, yCenter, handleClick) {
         angles2 = angles2-1
     }
 
-
+    return(list)
 }
 
+export default graphGeneration

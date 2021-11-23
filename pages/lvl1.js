@@ -1,6 +1,33 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Game from "../components/Game"
+import Lv1Game from "../components/lv1Game"
+import game1 from '../styles/colorSelector.module.css'
+import Scroll from 'react-scroll'
+import {Element} from 'react-scroll'
+import {useState} from "react";
+
+
+function GetText1(){
+    return (
+
+            <p>
+                <font size={+7} color={"#646363"} face={"century schoolbook"}>
+                    <strong>Первая головоломка</strong>
+                </font>
+                <br/>
+                <br/>
+                Перед Вами полный граф К6, состоящий из шести вершин,
+                каждая из котрых соединена со всеми остальными.
+                <br/>  <br/>
+                Есть два цвета: синий и красный. Вы можете выбрать цвет, нажав
+                на соответсвующую кнопку, расположенную слева.
+                <br/> <br/>
+                Задача очень проста: Вам нужно раскрасить рёбра этого графа двумя цветами
+                так, чтобы <strong>не получились одноцветные треугольники</strong>.
+            </p>
+
+    )
+}
 
 function GetText2(){
     return (
@@ -35,6 +62,16 @@ export default function Home(props) {
     const [showLoose] = useState(false)
     
     return (
-        <Game n = "6"/>
+        <div>
+            <Lv1Game n = "6" text = {GetText1} withGiveUpButton = {true} onGiveUp = {ShowLooseInfo}/>
+            <div> {/*Текст почему проиграл*/}
+                <Element name="LooseInfo1"/>
+
+                Текст почему проиграл
+
+
+            </div>
+            <Lv1Game n = "5" text = {GetText2}/>
+        </div>
     )
 }
