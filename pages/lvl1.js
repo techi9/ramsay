@@ -4,9 +4,8 @@ import Game from "../components/Game"
 
 
 
-export default function Home() {
-    let x = 15
-    x = new Date()
+export default function Home(props) {
+    props.PageUpdated(1)
     return (
         <Game n = "6"/>
     )

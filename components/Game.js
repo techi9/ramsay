@@ -16,7 +16,7 @@ class Game extends React.Component {
         let xCenter = 73, yCenter = 25
         for (let i=0; i<angles; i++)
         {
-            let angle = 2 * 3.14 / angles * i
+            let angle = 2 * Math.PI / angles * i
             this.vertexList.push({
                 'x': xCenter + Math.cos(angle)*radius,
                 'y': yCenter + Math.sin(angle)*radius,
@@ -196,7 +196,7 @@ class Game extends React.Component {
                 </svg>
 
 
-                <div className={styles.looseText}>
+                { !this.state.game ? <div className={styles.looseText}>
                     <p>
                         A lot of textA lot of textA lot of textA lot of textA lot of
                         <br/>
@@ -209,7 +209,7 @@ class Game extends React.Component {
                         A lot of textA lot of textA lot of textA lot of textA lot of
                         <br/>
                     </p>
-                </div>
+                </div> : ''}
             </div>
 
         );
