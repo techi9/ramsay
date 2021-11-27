@@ -8,6 +8,7 @@ import Lvl2Game from "../components/lvl2Game";
 import styles2 from "../styles/colorSelector.module.css";
 
 
+
 function GetText(){
     return (
         <div className={styles.rules}>
@@ -34,11 +35,11 @@ function GetText(){
 
 export default function lvl2(props) {
 
-    let router = useRouter()
+
     return (
         <div>
             <Lvl2Game n = "7" />
-            <input className={styles2.buttonNext} type="button" value="Продолжить" onClick={() => router.push('/')}/>
+            <input className={styles2.buttonNext} type="button" value="Продолжить" />
         </div>
     )
 }
