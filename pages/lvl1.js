@@ -6,6 +6,7 @@ import game1 from '../styles/colorSelector.module.css'
 import Scroll from 'react-scroll'
 import {Element} from 'react-scroll'
 import {useState} from "react";
+import {useRouter} from "next/router";
 
 
 function GetText1(){
@@ -48,7 +49,7 @@ function GetText2(){
                 Головоломка касается полного графа, имеющего на одну вершину меньше,
                 чем граф Рамсея – в нашем случае это граф К5. Очевидно, это наибольший
                 полный граф, на котором игра может закончиться вничью. Такой граф называется
-                <strong>критическим графом Рамсея</strong> для заданного графа Рамсея К6.
+                <strong> критическим графом Рамсея</strong> для заданного графа Рамсея К6.
                 <br/>  <br/> Головоломка состоит в нахождении раскраски критического графа, при которой не возникает ни одного
                 одноцветного треугольника. Такая раскраска называется <strong>критической раскраской</strong>.
                 Поэтому Ваша задача – найти критическую раскраску для графа К5.
@@ -105,10 +106,12 @@ export default function Home(props) {
                     на котором ничья невозможна.
                     <br/> <br/>
                 </font>
+                <hr noshade width="98%" align="left" size="6" style={{color: "black", backgroundColor : "black", marginBottom:"80px", marginTop: "50px"}}/>
+            </div> : ''}
 
+            {showLoose ? <Lv1Game n = "5" text = {GetText2}/> : ''}
+            {showLoose ? <input className={styles2.buttonNext} type="button" value="Продолжить" onClick={() => router.push('/lvl2')}/> : ''}
 
-            </div>
-            <Lv1Game n = "5" text = {GetText2}/>
         </div>
     )
 }

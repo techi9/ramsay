@@ -58,7 +58,6 @@ class Lv1Game extends React.Component {
             if(this.checkColor(this.vertexList[i], line.vertex1, tmpColor) &&
                 this.checkColor(this.vertexList[i], line.vertex2, tmpColor)){
                 this.showLooseInfo()
-                console.log("u lost")
                 return;
             }
         }
