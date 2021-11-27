@@ -12,7 +12,8 @@ function graphGeneration(list, n, radius, xCenter, yCenter, handleClick) {
             'x': xCenter + Math.cos(angle)*radius,
             'y': yCenter + Math.sin(angle)*radius,
             'vertex': <Vertex x = {xCenter + Math.cos(angle)*radius} y = {yCenter + Math.sin(angle)*radius} key = {i+1}/>,
-            'index' : i
+            'index' : i,
+            'connected': []
         })
     }
 

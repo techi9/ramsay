@@ -24,7 +24,9 @@ class Lv1Game extends React.Component {
             vertexList : this.vertexList,
             lineList: this.lineList,
             curColor : "red",
-            game: true
+            game: true,
+            showWin: false,
+            showLoose: false
         }
 
 
@@ -40,7 +42,7 @@ class Lv1Game extends React.Component {
         throw "line not found"
     }
 
-    checkColor(v1, v2, color){
+    checkColor = (v1, v2, color) => {
         for(let i in this.lineList){
             if((this.lineList[i].vertex1 === v1 && this.lineList[i].vertex2 === v2 ||
                 this.lineList[i].vertex1 === v2 && this.lineList[i].vertex2 === v1) && this.lineList[i].color === color){
@@ -64,13 +66,18 @@ class Lv1Game extends React.Component {
 
     showLooseInfo = () => {
         this.setState({
-            game : false
+            game : false,
+            showLoose: true
         })
-        this.props.onGiveUp()
+
     }
 
 
     handleClick = index => vertex1 => vertex2 =>  {
+
+        if(!this.state.game){
+            return
+        }
 
         this.lineList[index].line =
             <Line x1={this.lineList[index].x1} y1={this.lineList[index].y1} x2={this.lineList[index].x2} y2={this.lineList[index].y2}
@@ -83,13 +90,25 @@ class Lv1Game extends React.Component {
         })
 
         this.check(this.lineList[index])
+        this.checkWin()
 
     };
+
+    checkWin = () =>{
+        for(let index in this.lineList){
+            if(this.lineList[index].color === "gray"){
+                return
+            }
+        }
+        this.setState({
+            showWin : true
+        })
+    }
 
     handleClickRedButton = () => {
 
         this.setState({curColor : "red"})
-        console.log(this.lineList)
+
     }
 
     handleClickBlueButton = () => {
@@ -109,10 +128,16 @@ class Lv1Game extends React.Component {
 
         this.setState({
             vertexList : this.vertexList,
-            lineList: this.lineList
+            lineList : this.lineList,
+            game : true,
+            showWin: false,
+            showLoose: false
         })
 
+    }
 
+    showGiveUpInfo = () =>{
+        this.props.onGiveUp()
     }
 
     render() {
@@ -130,21 +155,26 @@ class Lv1Game extends React.Component {
                     {this.props.text()}
                     <input className={styles.buttonRetry} src="/retryButton.png" type="image" onClick={this.retryButton}/>
                     {this.props.withGiveUpButton ? <input className={styles.buttonLoose} type="button" value="посмотреть решение"
-                            onClick={this.showLooseInfo}/> : ''}
+                            onClick={this.showGiveUpInfo}/> : ''}
                 </div>
+                <div className={styles.winNLooseText}>
 
-                <input className={styles.buttonRed} type="button" value="  " onClick={this.handleClickRedButton}
-                       style={{"border-color": this.state.curColor === "red" ? "#151414" : "#d51717" }}/>
-                <input className={styles.buttonBlue} type="button" value="  " onClick={this.handleClickBlueButton}
-                       style={{"border-color": this.state.curColor === "blue" ? "#151414" : "#1776d5"}}/>
+                    <input className={styles.buttonRed} type="button" value="  " onClick={this.handleClickRedButton}
+                           style={{"border-color": this.state.curColor === "red" ? "#151414" : "#d51717" }}/>
+                    <input className={styles.buttonBlue} type="button" value="  " onClick={this.handleClickBlueButton}
+                           style={{"border-color": this.state.curColor === "blue" ? "#151414" : "#1776d5"}}/>
 
-                <svg viewBox="50 5 100 48" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="50 5 100 48" xmlns="http://www.w3.org/2000/svg">
 
-                    {linesToRender}
-                    {vertexesToRender}
+                        {linesToRender}
+                        {vertexesToRender}
 
-                </svg>
-
+                    </svg>
+                    <div className={styles.LooseWinContainer}>
+                        {this.state.showLoose ? <input className={styles.LooseInf} type="button" value="Вы проиграли :(" /> : ''}
+                        {this.state.showWin ? <input className={styles.WinInf} type="button" value="Вы выиграли"/> : ''}
+                    </div>
+                </div>
             </div>
 
         );

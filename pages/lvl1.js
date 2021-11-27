@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import styles2 from "../styles/colorSelector.module.css"
 import Lv1Game from "../components/lv1Game"
 import game1 from '../styles/colorSelector.module.css'
 import Scroll from 'react-scroll'
@@ -57,36 +58,51 @@ function GetText2(){
     )
 }
 
-function ShowLooseInfo(){
-    let scroll = Scroll.scroller
-    scroll.scrollTo('LooseInfo1',
-    {
-        duration: 1500,
-        delay: 100,
-        smooth: true
-    })
-}
+
 
 export default function Home(props) {
-    const [showLoose] = useState(false)
+    const [showLoose, setShowLoose] = useState(false)
+    const router = useRouter()
+
+    function ShowLooseInfo(){
+        setShowLoose(true)
+        let scroll = Scroll.scroller
+        setTimeout(() =>
+            scroll.scrollTo('LooseInfo1',
+                {
+                    duration: 1500,
+                    delay: 100,
+                    smooth: true
+                }),100)
+
+    }
+
     
     return (
         <div>
+
             <Lv1Game n = "6" text = {GetText1} withGiveUpButton = {true} onGiveUp = {ShowLooseInfo}/>
-            <div>
+
+            {showLoose ? <div>
                 <Element name="LooseInfo1"/>
+
                 <font size={+4} FACE={"century schoolbook"}>
                     Кажется, что-то пошло не так…
                     <br/> <br/>
                     Однако это не удивительно. Оказывается, если граф К6 2-раскрашен, то обязательно найдутся
                     по крайней мере два одноцветных треугольника. То есть как бы Вы не старались раскрасить этот граф,
-                    перебирая всевозможные комбинации, итог один –  Вы всегда проигрываете. Головоломка решения не имеет.
+                    перебирая всевозможные комбинации, итог один – Вы всегда проигрываете. Головоломка решения не имеет.
                     <br/> <br/>
-                    Давайте теперь введём понятие «граф Рамсея». Представьте, что Вы с другом решили сыграть в игру на графе К6.
-                    У каждого из Вас есть свой цвет, которым Вы собираетесь раскрашивать рёбра. Стоит заметить, что в первой
-                    головоломке каждый раз, когда Вы пытались раскрасить рёбра графа К6 так, чтобы не получился одноцветный
-                    треугольник, он всегда получался. Значит, играя с другом, один из Вас точно проиграет, первым построив
-                    тот самый одноцветный треугольник. Тогда <strong>граф Рамсея</strong> – это наименьший полный граф, на котором ничья невозможна.
+                    Давайте теперь введём понятие «граф Рамсея». Представьте, что Вы с другом решили сыграть в игру на
+                    графе К6.
+                    У каждого из Вас есть свой цвет, которым Вы собираетесь раскрашивать рёбра. Стоит заметить, что в
+                    первой
+                    головоломке каждый раз, когда Вы пытались раскрасить рёбра графа К6 так, чтобы не получился
+                    одноцветный
+                    треугольник, он всегда получался. Значит, играя с другом, один из Вас точно проиграет, первым
+                    построив
+                    тот самый одноцветный треугольник. Тогда <strong>граф Рамсея</strong> – это наименьший полный граф,
+                    на котором ничья невозможна.
                     <br/> <br/>
                 </font>
 
