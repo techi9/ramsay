@@ -138,6 +138,10 @@ class Lvl2Game extends React.Component {
             return;
         }
 
+        if(this.getLine(vertex1,vertex2).color !== "gray"){
+            return;
+        }
+
         this.lineList[index].line =
             <Line x1={this.lineList[index].x1} y1={this.lineList[index].y1} x2={this.lineList[index].x2} y2={this.lineList[index].y2}
                   onClick = {this.handleClick} vertex1 = {vertex1} vertex2 = {vertex2} color={this.state.userColor} index = {index}/>;
@@ -148,15 +152,16 @@ class Lvl2Game extends React.Component {
                 userWin: true
             })
         }
+        else{
+            this.computerTurn()
+        }
 
         this.setState({
             vertexList : this.vertexList,
             lineList: this.lineList
         })
 
-        if(this.state.userWin === false){
-            this.computerTurn()
-        }
+
 
     };
 

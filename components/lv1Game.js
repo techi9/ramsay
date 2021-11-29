@@ -58,9 +58,10 @@ class Lv1Game extends React.Component {
             if(this.checkColor(this.vertexList[i], line.vertex1, tmpColor) &&
                 this.checkColor(this.vertexList[i], line.vertex2, tmpColor)){
                 this.showLooseInfo()
-                return;
+                return true;
             }
         }
+        return false
     }
 
     showLooseInfo = () => {
@@ -88,8 +89,10 @@ class Lv1Game extends React.Component {
             lineList: this.lineList
         })
 
-        this.check(this.lineList[index])
-        this.checkWin()
+        if(!this.check(this.lineList[index])){
+            this.checkWin()
+        }
+
 
     };
 

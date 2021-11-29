@@ -1,15 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/colorSelector.module.css'
-import Link from "next/link";
-import sidebar from "../styles/sidebar.module.css";
-import {useRouter} from "next/router";
 import Lvl2Game from "../components/lvl2Game";
 import styles2 from "../styles/colorSelector.module.css";
 
 
 
+
 function GetText(){
+
     return (
         <div className={styles.rules}>
             <p>
@@ -33,13 +30,16 @@ function GetText(){
     )
 }
 
+
+
 export default function lvl2(props) {
 
+    const router = props.router
 
     return (
         <div>
             <Lvl2Game n = "7" />
-            <input className={styles2.buttonNext} type="button" value="Продолжить" />
+            <input className={styles2.buttonNext} type="button" value="Продолжить" onClick={() => router.push('/lvl3')}/>
         </div>
     )
 }
