@@ -31,7 +31,6 @@ function GetText(){
 }
 
 
-
 export default function lvl2(props) {
 
     const router = props.router
@@ -43,3 +42,4 @@ export default function lvl2(props) {
         </div>
     )
 }
+

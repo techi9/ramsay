@@ -33,7 +33,7 @@ export default function lvl3(props) {
     return (
         <div>
             <Lvl3Game n = "7" />
-            <input className={styles2.buttonNext} type="button" value="Продолжить" />
+            <input className={styles2.buttonNext} type="button" value="Продолжить" onClick={() => router.push('/lvl4')}/>
         </div>
     )
 }

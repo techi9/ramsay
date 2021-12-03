@@ -8,7 +8,6 @@ class Lvl2Game extends React.Component {
     vertexList = []
     lineList = []
     list = [this.vertexList, this.lineList]
-    userLinesList = []
 
     constructor(props) {
         super(props);
