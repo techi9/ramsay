@@ -32,6 +32,7 @@ function graphGeneration(list, n, radius, xCenter, yCenter, handleClick) {
                               onClick = {handleClick} vertex1 = {vertexList[vertexList.length - j-1]} vertex2 = {vertexList[i]} color={"gray"} index = {lineIndex}/>,
 
                 'color': "gray",
+                'index': lineIndex,
                 'vertex1': vertexList[vertexList.length - j-1],
                 'vertex2': vertexList[i]
             })

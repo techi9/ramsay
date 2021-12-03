@@ -35,6 +35,37 @@ class Lvl3Game extends React.Component {
 
     }
 
+    getLine = (v1, v2) => {
+        for(let i in this.lineList){
+            if(this.lineList[i].vertex1.index === v1.index && this.lineList[i].vertex2.index === v2.index ||
+                this.lineList[i].vertex1.index === v2.index && this.lineList[i].vertex2.index === v1.index) {
+                return this.lineList[i];
+            }
+        }
+        console.log(v1, v2)
+        throw ("line not found")
+    }
+
+    checkColor = (v1, v2, color) => {
+        for(let i in this.lineList){
+            if((this.lineList[i].vertex1 === v1 && this.lineList[i].vertex2 === v2 ||
+                this.lineList[i].vertex1 === v2 && this.lineList[i].vertex2 === v1) && this.lineList[i].color === color){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    check = (line, color) => {
+        for(let i in this.vertexList){
+            if(this.checkColor(this.vertexList[i], line.vertex1, color) &&
+                this.checkColor(this.vertexList[i], line.vertex2, color)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     deleteUserLineTurn = (deleteIndex) => {
         for(let index in this.turnList){
             if(this.lineList[deleteIndex].index === this.turnList[index].index){

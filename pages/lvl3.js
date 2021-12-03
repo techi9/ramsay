@@ -29,6 +29,7 @@ function GetText(){
 
 export default function lvl3(props) {
 
+    const router = props.router
 
     return (
         <div>

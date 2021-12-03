@@ -12,11 +12,7 @@ export default function Home(props) {
 
   return (
     <div>
-      <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="Generated create next app" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+
       {/*----------------------------------------------------------------*/}
       <main className={styles.main}>
 
