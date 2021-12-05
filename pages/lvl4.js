@@ -1,5 +1,5 @@
-import Lvl3Game from "../components/lvl3Game";
 import styles2 from "../styles/colorSelector.module.css";
+import Lvl4Game from "../components/lvl4Game";
 
 export default function lvl4(props) {
 
@@ -7,7 +7,7 @@ export default function lvl4(props) {
 
     return (
         <div>
-            <Lvl3Game n = "16" />
+            <Lvl4Game n = "7" />
             <input className={styles2.buttonNext} type="button" value="Продолжить" onClick={() => router.push('/lvl5')}/>
         </div>
     )
