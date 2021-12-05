@@ -1,0 +1,200 @@
+.content{
+    overflow-x: hidden;
+}
+
+.winNLooseText{
+
+}
+
+.graph{
+    position: relative;
+    left: 25%;
+}
+
+.graph svg{
+    margin-top: -80px;
+}
+
+.LooseWinContainer{
+    margin-top: -120px;
+    margin-left: 180px;
+    margin-bottom: 110px;
+}
+
+.LooseWinContainer2{
+    margin-top: -0px;
+    margin-left: 180px;
+    margin-bottom: 110px;
+}
+
+.rules{
+    /*position: absolute;*/
+    /*right: 0;*/
+    /*margin-right: 30px;*/
+    /*text-align: center;*/
+    text-indent: 50px;
+    text-align: justify;
+    margin-right: 1.5ch;
+    /*width: 42%;*/
+    font-size: 20px;
+}
+
+.rules h1{
+    text-align: center;
+}
+
+.LooseInf{
+    min-width: 20%;
+    font-size: 25px;
+    font-family:"Alumni Sans",SansSerif;
+    font-weight: 600;
+    border: none;
+    border-radius: 3px;
+    color: #000000;
+    background: #e1e1e1;
+    height: 40px;
+    float: initial;
+    transition: 200ms;
+}
+
+.WinInf{
+    min-width: 20%;
+    font-size: 25px;
+    font-family:"Alumni Sans",SansSerif;
+    font-weight: 600;
+    border: none;
+    border-radius: 3px;
+    color: #000000;
+    background: #4CAF50;
+    height: 40px;
+    float: initial;
+    transition: 200ms;
+}
+
+.buttonNext{
+    position: relative;
+    min-width: 20%;
+    font-size: 25px;
+    font-family:"Alumni Sans",SansSerif;
+    font-weight: 600;
+    flex-grow: 1;
+    border: none;
+    border-radius: 6px;
+    color: #444444;
+    background: #a9a9a9;
+    margin: -80px 8px 4px 0px;
+    height: 40px;
+    float: right;
+    transition: 200ms;
+
+
+}
+
+.buttonLoose{
+    min-width: 20%;
+    font-size: 25px;
+    font-family:"Alumni Sans",SansSerif;
+    font-weight: 600;
+    flex-grow: 1;
+    border: none;
+    border-radius: 3px;
+    color: #444444;
+    background: #a9a9a9;
+    margin: 40px 8px 4px 0px;
+    height: 40px;
+    float: right;
+    transition: 200ms;
+}
+
+.buttonLoose:hover{
+    border-radius: 20px;
+    color: #ffffff;
+    background: #575757;
+}
+
+.buttonRetry{
+    position: relative;
+
+    min-width: 8%;
+    font-size: 25px;
+
+    font-weight: 500;
+    flex-grow: 1;
+
+    border: none;
+
+    color: #151414;
+    background: #ffffff;
+
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+
+
+    float: left;
+    transition: 200ms;
+}
+
+.buttonRetry2{
+    position: relative;
+    float: left;
+    min-width: 8%;
+    font-size: 25px;
+    margin-top: 50px;
+    font-weight: 500;
+    flex-grow: 1;
+
+    border: none;
+
+    color: #151414;
+    background: #ffffff;
+
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    transition: 200ms;
+}
+
+
+.buttonRed{
+
+    min-width: 15%;
+    font-size: 25px;
+    border-width: 7px;
+
+    font-family:"Alumni Sans",SansSerif;
+    font-weight: 550;
+    border-radius: 6px;
+
+    color: #151414;
+    background: #d51717;
+    margin: 0 8px 0 5.5%;
+    height: 40px;
+    transition: 200ms;
+}
+
+.buttonRed:hover{
+    /*border-radius: 20px;*/
+    color: #ffffff;
+}
+
+.buttonBlue{
+    min-width: 15%;
+    font-size: 25px;
+    border-width: 7px;
+    font-family:"Alumni Sans",SansSerif;
+    font-weight: 550;
+    flex-grow: 1;
+    border-radius: 6px;
+    color: #151414;
+    background: #1776d5;
+    margin: 4px 8px 4px 0px;
+    height: 40px;
+
+    transition: 200ms;
+}
+
+.buttonBlue:hover{
+    /*border-radius: 20px;*/
+    color: #ffffff;
+}
