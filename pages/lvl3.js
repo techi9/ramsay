@@ -1,14 +1,14 @@
 import styles from '../styles/colorSelector.module.css'
 import styles2 from "../styles/colorSelector.module.css";
 import Lvl3Game from "../components/lvl3Game";
+import SideBar from "../components/SideBar";
 
 
 function GetText(){
     return (
-        <div className={styles.rules}>
             <p>
                 <font size={+7} color={"#646363"} face={"century schoolbook"}>
-                    <strong>Игра достижения</strong>
+                    <strong>Игра уклонения</strong>
                 </font>
                 <br/>
                 <br/>
@@ -22,8 +22,6 @@ function GetText(){
                     кнопку «начать» и компьютер сделает первый ход.
                 </font>
             </p>
-        </div>
-
     )
 }
 
@@ -32,9 +30,10 @@ export default function lvl3(props) {
     const router = props.router
 
     return (
-        <div>
-            <Lvl3Game n = "7" />
-            <input className={styles2.buttonNext} type="button" value="Продолжить" onClick={() => router.push('/lvl4')}/>
+        <div className={styles2.lvl3}>
+            <SideBar selected = {4}/>
+            <Lvl3Game n = "7" Text = {GetText} />
+            <input className={styles2.buttonNext33} type="button" value="Продолжить" onClick={() => router.push('/lvl4')}/>
         </div>
     )
 }

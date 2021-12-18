@@ -162,45 +162,49 @@ class Lvl4Game extends React.Component {
         return (
             <div className={lvl4.content}>
 
-                <div className={lvl4.rules}>
-                    <p>
-                        <font size={+5} color={"#646363"} face={"century schoolbook"}>
-                            <h1>Игра достижения</h1>
+                <div className={lvl4.text1}>
+                    {this.props.Text()}
+
+                </div>
+                <div className={lvl4.content2}>
+                    <div className={lvl4.rules}>
+                        <font size={+4} FACE={"century schoolbook"}>
+                        <p>А какого наименьшее число для графа К7? Получается, что n = 7 – это третий случай, в котором k = 1.
+                            Следовательно, по формулам наименьшее число одноцветных треугольников равно <br/>
+                            <div style={{textAlign : "center"}}> <font size={+5}> ⅓</font> • 2•1•(1 + 1)(4•1 - 1) = 4. </div>
+                            {/*<font size={+5}> ⅓</font> • 2•1•(1 + 1)(4•1 - 1) = 4.<br/>*/}
+                            Попробуем в этом убедиться.</p>
+
+                        <p><strong>Ваша задача</strong>: 2-раскрасить полный граф с 7-ю вершинами так,
+                            чтобы не получилось синих треугольников и
+                            получилось не более четырёх красных треугольников.</p>
                         </font>
+                        <div className={lvl4.colorselector}>
+                            <input className={lvl4.buttonRed} type="button" value="  " onClick={this.handleClickRedButton}
+                                   style={{"border-color": this.state.curColor === "red" ? "#151414" : "#d51717" }}/>
+                            <input className={lvl4.buttonBlue} type="button" value="  " onClick={this.handleClickBlueButton}
+                                   style={{"border-color": this.state.curColor === "blue" ? "#151414" : "#1776d5"}}/>
+                        </div>
+
+                        <input className={lvl4.buttonRetry2} src="/retryButton.png" type="image" onClick={this.retryButton}/>
+
+                    </div>
+                    <div className={lvl4.graph}>
 
 
-                        <font size={+5} FACE={"century schoolbook"}>
-                            <p>Граф Рамсея замечателен тем, что на нём можно как разгадывать головоломки, так и проводить игры.
-                            Одна из таких игр — это <strong>игра достижения</strong>. Перед Вами граф К7. И если в предыдущих
-                            головоломках нельзя было получать одноцветный треугольник, то в данной игре
-                            Ваша задача совершенно противоположная.</p>
+                        <svg viewBox="80 39 100 48" xmlns="http://www.w3.org/2000/svg">
+                            {linesToRender}
+                            {vertexesToRender}
+                            {/*<rect width="100%" height="100%"/>*/}
 
-                            <p>В игре достижения выигрывает первый игрок, который завершит построение одноцветного
-                            треугольника. Всё просто: Вы делаете ход, нажимая на ребро графа, после этого ход делает компьютер и так далее.</p>
-                        </font>
-                    </p>
-                    <input className={lvl4.buttonRetry2} src="/retryButton.png" type="image" onClick={this.retryButton}/>
+                        </svg>
+                    </div>
+
+                    <div className={lvl4.LooseWinContainer2}>
+                        {this.state.userWin ? <input className={styles.WinInf} type="button" value="Вы выиграли" /> : ''}
+                        {this.state.userLoose ?<input className={styles.LooseInf} type="button" value="Вы проиграли"/> : ''}
+                    </div>
                 </div>
-
-                <div className={lvl4.graph}>
-                    <input className={lvl4.buttonRed} type="button" value="  " onClick={this.handleClickRedButton}
-                           style={{"border-color": this.state.curColor === "red" ? "#151414" : "#d51717" }}/>
-                    <input className={lvl4.buttonBlue} type="button" value="  " onClick={this.handleClickBlueButton}
-                           style={{"border-color": this.state.curColor === "blue" ? "#151414" : "#1776d5"}}/>
-
-                    <svg viewBox="80 39 100 48" xmlns="http://www.w3.org/2000/svg">
-                        {linesToRender}
-                        {vertexesToRender}
-                        {/*<rect width="100%" height="100%"/>*/}
-
-                    </svg>
-                </div>
-
-                <div className={lvl4.LooseWinContainer2}>
-                    {this.state.userWin ? <input className={styles.WinInf} type="button" value="Вы выиграли" /> : ''}
-                    {this.state.userLoose ?<input className={styles.LooseInf} type="button" value="Вы проиграли"/> : ''}
-                </div>
-
             </div>
 
         );

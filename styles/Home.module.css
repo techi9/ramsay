@@ -124,6 +124,24 @@
   margin-left: 0.5rem;
 }
 
+.proofpic{
+  position: relative;
+  top: -400px;
+  left: -70px;
+  margin-right: 0;
+  width: 450px;
+  height: 370px;
+}
+.leftPic{
+  text-align: justify;
+  width: 700px;
+  line-height: 1.5;
+}
+
+.contProof{
+  margin-bottom: -400px;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

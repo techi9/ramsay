@@ -9,7 +9,7 @@ class SideBar extends React.Component {
         super(props);
 
         this.state = {
-            selected : 1
+            selected : this.props.selected
         }
 
     }

@@ -1,12 +1,13 @@
 import styles from '../styles/colorSelector.module.css'
 import Lvl2Game from "../components/lvl2Game";
 import styles2 from "../styles/colorSelector.module.css";
+import SideBar from "../components/SideBar";
 
 
 function GetText(){
 
     return (
-        <div className={styles.rules}>
+
             <p>
                 <font size={+7} color={"#646363"} face={"century schoolbook"}>
                     <strong>Игра достижения</strong>
@@ -21,7 +22,7 @@ function GetText(){
                     Всё просто: Вы делаете ход, нажимая на ребро графа, после этого ход делает компьютер и так далее.
                 </font>
             </p>
-        </div>
+
 
     )
 }

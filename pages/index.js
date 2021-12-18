@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import Link from "next/link";
 import sidebar from "../styles/sidebar.module.css";
 import {useRouter} from "next/router";
+import SideBar from "../components/SideBar";
 
 
 export default function Home(props) {
@@ -12,7 +13,7 @@ export default function Home(props) {
 
   return (
     <div>
-
+        <SideBar selected = {1}/>
       {/*----------------------------------------------------------------*/}
       <main className={styles.main}>
 

@@ -7,6 +7,7 @@ import Scroll from 'react-scroll'
 import {Element} from 'react-scroll'
 import {useState} from "react";
 import {useRouter} from "next/router";
+import SideBar from "../components/SideBar";
 
 
 function GetText1(){
@@ -81,7 +82,7 @@ export default function Home(props) {
     
     return (
         <div>
-
+            <SideBar selected = {2}/>
             <Lv1Game n = "6" text = {GetText1} withGiveUpButton = {true} onGiveUp = {ShowLooseInfo}/>
 
             {showLoose ? <div>
@@ -114,7 +115,7 @@ export default function Home(props) {
                     </div>
                 <br/><br/><br/><br/>
                 </font>
-                <hr noshade width="98%" align="left" size="6" style={{color: "black", backgroundColor : "black", marginBottom:"80px", marginTop: "50px"}}/>
+                {/*<hr noshade width="98%" align="left" size="6" style={{color: "black", backgroundColor : "black", marginBottom:"80px", marginTop: "50px"}}/>*/}
             </div> : ''}
 
             {showLoose ? <Lv1Game n = "5" text = {GetText2}/> : ''}

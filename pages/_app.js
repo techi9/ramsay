@@ -16,8 +16,9 @@ function MyApp({ Component, pageProps }) {
               <title>Ramsay</title>
               <meta name="description" content="SoulsLikeRiddles" />
               <link rel="icon" href="/favicon.ico" />
+
           </Head>
-        <SideBar/>
+
 
         <Component {...pageProps}  router = {router1}/>
 
