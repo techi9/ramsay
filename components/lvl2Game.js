@@ -196,27 +196,14 @@ class Lvl2Game extends React.Component {
         return (
             <div className={styles.content}>
 
+
+
+
+
                 <div className={styles.rules}>
-                    <p>
-                        <font size={+7} color={"#646363"} face={"century schoolbook"}>
-                            <strong>Игра достижения</strong>
-                        </font>
-                        <br/>
-                        <br/>
-                        <font size={+4} FACE={"century schoolbook"}>
-                            Граф Рамсея замечателен тем, что на нём можно как разгадывать головоломки, так и проводить игры.
-                            Одна из таких игр — это <strong>игра достижения</strong>. Перед Вами граф К7. И если в предыдущих
-                            головоломках нельзя было получать одноцветный треугольник, то в данной игре
-                            Ваша задача совершенно противоположная.
-                            <br/> <br/>
-                            В игре достижения выигрывает первый игрок, который завершит построение одноцветного
-                            треугольника. Всё просто: Вы делаете ход, нажимая на ребро графа, после этого ход делает компьютер и так далее.
-                        </font>
-                    </p>
-                    <input className={styles.buttonRetry2} src="/retryButton.png" type="image" onClick={this.retryButton}/>
+                    {this.props.getText()}
+                <input className={styles.buttonRetry2} src="/retryButton.png" type="image" onClick={this.retryButton}/>
                 </div>
-                {/*<input className={styles.buttonBlue} type="button" value="  " onClick={this.handleClickBlueButton}*/}
-                {/*       style={{"border-color": this.state.curColor === "blue" ? "#151414" : "#1776d5"}}/>*/}
 
                 <svg viewBox="58 5 100 48" xmlns="http://www.w3.org/2000/svg">
 

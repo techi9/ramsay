@@ -28,7 +28,7 @@ class SideBar extends React.Component {
 
                 <div className={this.state.selected === 1 ? sidebar.selected : sidebar.unselect}>
                     <Link href={"/"} >
-                        <a onClick={() => this.setState({selected : 1})}>Введение в теорему</a>
+                        <a onClick={() => this.setState({selected : 1})}>Введение</a>
                     </Link>
                 </div>
 
@@ -57,7 +57,11 @@ class SideBar extends React.Component {
                     </Link>
                 </div>
 
-
+                <div className={this.state.selected === 6 ? sidebar.selected : sidebar.unselect}>
+                    <Link href={"/lvl5"}>
+                        <a onClick={() => this.setState({selected : 6})}>Уровень 5</a>
+                    </Link>
+                </div>
 
             </div>
         );
