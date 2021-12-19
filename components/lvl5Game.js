@@ -11,7 +11,7 @@ class Lvl5Game extends React.Component {
     vertexList = []
     lineList = []
     list = [this.vertexList, this.lineList]
-    redTriangles = 0
+    coloredList = []
 
     constructor(props) {
         super(props);
@@ -28,7 +28,9 @@ class Lvl5Game extends React.Component {
             userColor : "red",
             userScore: 0,
             userWin: false,
-            userLoose: false
+            userLoose: false,
+            deadHeat: false,
+            game: true
         }
         this.turnList = shuffle(this.lineList)
     }
@@ -79,20 +81,45 @@ class Lvl5Game extends React.Component {
                   onClick = {this.handleClick} vertex1 = {vertex1} vertex2 = {vertex2} color={this.state.userColor} index = {index}/>;
         this.lineList[index].color = this.state.userColor
 
+
+
+        // пересчёт треугольников юзера + добавляем количество (Наташа)
+        this.check(this.lineList[index], this.state.userColor, true)
+
+        this.deleteFromTurnList(index)
+        // удаляем из перемешанного листа раскрашенную юзером линию
+
+        // если все линии colored - > конец игры, выводим итог (Наташа)
+        if(this.turnList.length === 0){
+            // ИГРА ЗАВЕРШИЛАСЬ -> ВЫВОДИМ РЕЗУЛЬТАТ
+            this.setState({game : false})
+            this.results()
+            return;
+        }
+        this.compTurn()
+        // если все линии colored - > конец игры, выводим итог (Наташа)
+        /*if(this.turnList.size === 0){
+            // ИГРА ЗАВЕРШИЛАСЬ -> ВЫВОДИМ РЕЗУЛЬТАТ
+            this.setState({game : false})
+            return;
+        }*/
+        // comp turn
+            // достроить свой, если уже есть 2 линии // Толик +треугольник
+            // перекрыть пользователя, если у него уже есть 2 линии // Толик
+            // начать треугольник от своей линии (2-х вершин) (Наташа)
+            // если ничего не сделать красим хоть что то
+                // первый ход рандом  (Наташа)
+
+        // удаляем из перемешанного листа раскрашенную компьютером линию
+
+        for(let index in this.coloredList) {
+            this.check(this.coloredList[index], this.state.compColor, true)
+            //this.check(this.turnList[index], this.state.userColor, true)
+        }
         this.setState({
             vertexList : this.vertexList,
             lineList: this.lineList
         })
-
-        /*if(((this.lineList[index].color === 'red') ? !this.checkRedTriangles(this.lineList[index]) : false) ||
-            ((this.lineList[index].color === 'blue') ? this.check(this.lineList[index], "blue") : false)){
-            this.setState({userLoose: true})
-            return
-        }
-        else {
-            this.setState({userLoose: false})
-        }
-        this.checkWin()*/
 
     };
 
@@ -111,10 +138,11 @@ class Lvl5Game extends React.Component {
             vertexList : this.vertexList,
             lineList: this.lineList,
             userWin: false,
-            userLoose: false
+            userLoose: false,
+            compScore: 0,
+            userScore: 0
         })
 
-        this.redTriangles = 0
 
     }
 
