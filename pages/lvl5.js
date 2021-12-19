@@ -1,7 +1,8 @@
 import styles2 from "../styles/colorSelector.module.css";
-import Lvl5Game from "../components/lvl4Game";
+import Lvl5Game from "../components/lvl5Game";
 import SideBar from "../components/SideBar";
 import styles from "../styles/colorSelector.module.css";
+import lvl5s from "../styles/lvl5.module.css"
 
 function GetText(){
 
@@ -20,7 +21,7 @@ function GetText(){
     )
 }
 
-export default function lvl4(props) {
+export default function lvl5(props) {
 
     const router = props.router
 
@@ -28,7 +29,7 @@ export default function lvl4(props) {
         <div>
             <SideBar selected = {6}/>
             <Lvl5Game n = "7" Text = {GetText}/>
-            <input className={styles2.buttonNext3} type="button" value="Продолжить" onClick={() => router.push('/lvl6')}/>
+            <input className={lvl5s.buttonNext} type="button" value="Продолжить" onClick={() => router.push('/lvl6')}/>
         </div>
     )
 }

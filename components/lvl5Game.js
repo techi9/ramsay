@@ -4,7 +4,8 @@ import Line from "./Line";
 import styles from '../styles/colorSelector.module.css'
 import graphGeneration from '/utility/graphGeneration'
 import shuffle from '/utility/shuffle'
-import lvl5 from "../styles/lvl4.module.css"
+import lvl5 from "../styles/lvl5.module.css"
+import Image from 'next/image'
 
 
 class Lvl5Game extends React.Component {
@@ -45,26 +46,146 @@ class Lvl5Game extends React.Component {
         return false;
     }
 
-    check = (line, color) => {
-        // можно попробовать считать количество треугольников и выводить их пока что для проверки
+    check = (line, color, add = false) => {
+
         let count = 0
         for(let i in this.vertexList){
             if(this.checkColor(this.vertexList[i], line.vertex1, color) &&
                 this.checkColor(this.vertexList[i], line.vertex2, color)){
-                count ++
+                count++
             }
         }
-        if(color === "red"){
-            this.redTriangles += count
+        if (add){
+            if(color === this.state.userColor){
+                let t = this.state.userScore
+                this.setState({userScore : t + count})
+            }
+            else if (color === this.state.compColor){
+                let t = this.state.compScore
+                this.setState({compScore : t + count})
+            }
         }
-        console.log(this.redTriangles)
-        return count !== 0;
+
+
+        return count;
     }
 
-    checkRedTriangles = (line, color) => {
-        this.check(line, color)
-        return this.redTriangles <= 4;
+    deleteFromTurnList = (deleteIndex) => {
+        for(let index in this.turnList){
+            if(this.lineList[deleteIndex].index === this.turnList[index].index){
+                this.turnList.splice(index, 1)
+                break
+            }
+        }
     }
+
+    getLine = (v1, v2) => {
+        for(let i in this.lineList){
+            if(this.lineList[i].vertex1.index === v1.index && this.lineList[i].vertex2.index === v2.index ||
+                this.lineList[i].vertex1.index === v2.index && this.lineList[i].vertex2.index === v1.index) {
+                return this.lineList[i];
+            }
+        }
+
+        throw ("line not found")
+    }
+
+    compTurn = () =>{
+        // достроить свой, если уже есть 2 линии // Толик +треугольник
+        for(let index in this.turnList){
+            if (this.check(this.turnList[index], this.state.compColor)){  // достраиваем свой
+                this.lineList[this.turnList[index].index].color = this.state.compColor
+                this.lineList[this.turnList[index].index].line =
+                    <Line x1={this.lineList[this.turnList[index].index].x1} y1={this.lineList[this.turnList[index].index].y1}
+                          x2={this.lineList[this.turnList[index].index].x2} y2={this.lineList[this.turnList[index].index].y2}
+                          onClick = {this.handleClick}
+                          vertex1 = {this.lineList[this.turnList[index].index].vertex1}
+                          vertex2 = {this.lineList[this.turnList[index].index].vertex2}
+                          color={this.state.compColor}
+                          index = {this.lineList[this.turnList[index].index].index}/>
+                this.coloredList.push(this.turnList[index])
+                this.turnList.splice(index, 1)
+                return
+            }
+        }
+        // перекрыть пользователя, если у него уже есть 2 линии // Толик
+        for(let index in this.turnList){
+            if (this.check(this.turnList[index],this.state.userColor)){  // перекрываем
+                this.lineList[this.turnList[index].index].color = this.state.compColor
+                this.lineList[this.turnList[index].index].line =
+                    <Line x1={this.lineList[this.turnList[index].index].x1} y1={this.lineList[this.turnList[index].index].y1}
+                          x2={this.lineList[this.turnList[index].index].x2} y2={this.lineList[this.turnList[index].index].y2}
+                          onClick = {this.handleClick}
+                          vertex1 = {this.lineList[this.turnList[index].index].vertex1}
+                          vertex2 = {this.lineList[this.turnList[index].index].vertex2}
+                          color={this.state.compColor}
+                          index = {this.lineList[this.turnList[index].index].index}/>
+                this.coloredList.push(this.turnList[index])
+                this.turnList.splice(index, 1)
+                return
+            }
+        }
+        // начать треугольник от своей линии (2-х вершин) (Наташа)
+        for(let index in this.coloredList) {
+            // начинаю обрабатывать
+            let v1 = this.coloredList[index].vertex1
+            let v2 = this.coloredList[index].vertex2
+            for (let tmp in this.vertexList) {
+                let v3 = this.vertexList[tmp]
+                if (v3 !== v1 && v3 !== v2 && this.checkColor(v1, v3, "gray") && this.checkColor(v2, v3, "gray")) {
+                    let new_line = this.getLine(v1, v3)
+                    this.lineList[new_line.index].color = this.state.compColor
+                    this.lineList[new_line.index].line =
+                        <Line x1={this.lineList[new_line.index].x1} y1={this.lineList[new_line.index].y1}
+                              x2={this.lineList[new_line.index].x2} y2={this.lineList[new_line.index].y2}
+                              onClick={this.handleClick}
+                              vertex1={this.lineList[new_line.index].vertex1}
+                              vertex2={this.lineList[new_line.index].vertex2}
+                              color={this.state.compColor}
+                              index={this.lineList[new_line.index].index}/>
+
+                    for (let index1 in this.turnList) {
+                        if (this.turnList[index1].index === this.lineList[new_line.index].index) {
+                            this.coloredList.push(this.turnList[index1])
+                            this.turnList.splice(index1, 1)
+                            break
+                        }
+                    }
+
+                    return
+                }
+            }
+
+        }
+        // если ничего не сделать красим хоть что то
+        let index = 0
+        this.lineList[this.turnList[index].index].color = this.state.compColor
+        this.lineList[this.turnList[index].index].line =
+            <Line x1={this.lineList[this.turnList[index].index].x1} y1={this.lineList[this.turnList[index].index].y1}
+                  x2={this.lineList[this.turnList[index].index].x2} y2={this.lineList[this.turnList[index].index].y2}
+                  onClick = {this.handleClick}
+                  vertex1 = {this.lineList[this.turnList[index].index].vertex1}
+                  vertex2 = {this.lineList[this.turnList[index].index].vertex2}
+                  color={this.state.compColor}
+                  index = {this.lineList[this.turnList[index].index].index}/>
+        this.coloredList.push(this.turnList[index])
+        this.turnList.splice(index, 1)
+    }
+
+    results = () => {
+        if(this.state.userScore > this.state.compScore){
+            this.setState({userWin: true})
+            return;
+        }
+        if(this.state.userScore < this.state.compScore){
+            this.setState({userLoose: true})
+            return;
+        }
+        if(this.state.userScore === this.state.compScore){
+            this.setState({deadHeat: true})
+        }
+    }
+
 
 
     handleClick = index => vertex1 => vertex2 =>  {
@@ -134,6 +255,7 @@ class Lvl5Game extends React.Component {
 
         }
 
+        this.turnList = shuffle(this.lineList)
         this.setState({
             vertexList : this.vertexList,
             lineList: this.lineList,
@@ -157,17 +279,18 @@ class Lvl5Game extends React.Component {
         return (
             <div className={lvl5.content}>
 
-                <div className={lvl5.text1}>
+                <div className={lvl5.rules}>
                     {this.props.Text()}
                     <input className={lvl5.buttonRetry2} src="/retryButton.png" type="image" onClick={this.retryButton}/>
+                    <div className={lvl5.count}>
+                        <div className={lvl5.count1}>{this.state.userScore}</div>
+                        <div className={lvl5.count2}>{this.state.compScore}</div>
+                        <img src = "/scoreBoard.jpg" className={lvl5.countPic}/>
+                    </div>
+
                 </div>
 
                 <div className={lvl5.graph}>
-                    {/*<input className={lvl5.buttonRed} type="button" value="  " onClick={this.handleClickRedButton}
-                           style={{"border-color": this.state.curColor === "red" ? "#151414" : "#d51717" }}/>
-                    <input className={lvl5.buttonBlue} type="button" value="  " onClick={this.handleClickBlueButton}
-                           style={{"border-color": this.state.curColor === "blue" ? "#151414" : "#1776d5"}}/>*/}
-
                     <svg viewBox="80 39 100 48" xmlns="http://www.w3.org/2000/svg">
                         {linesToRender}
                         {vertexesToRender}
@@ -178,6 +301,7 @@ class Lvl5Game extends React.Component {
                 <div className={lvl5.LooseWinContainer2}>
                     {this.state.userWin ? <input className={styles.WinInf} type="button" value="Вы выиграли" /> : ''}
                     {this.state.userLoose ?<input className={styles.LooseInf} type="button" value="Вы проиграли"/> : ''}
+                    {this.state.deadHeat ?<input className={styles.LooseInf} type="button" value="Ничья"/> : ''}
                 </div>
 
             </div>

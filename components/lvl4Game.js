@@ -113,9 +113,7 @@ class Lvl4Game extends React.Component {
             vertexList : this.vertexList,
             lineList: this.lineList
         })
-        // console.log("RedTriangles:")
-        // console.log("Blue:")
-        // console.log((this.lineList[index].color === 'blue') ? this.check(this.lineList[index], "blue") : false)
+
 
         if(((this.lineList[index].color === 'red') ? !this.checkRedTriangles(this.lineList[index]) : false) ||
             ((this.lineList[index].color === 'blue') ? this.check(this.lineList[index], "blue") : false)){
