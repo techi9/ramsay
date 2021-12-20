@@ -217,6 +217,7 @@ class Lvl5Game extends React.Component {
             this.results()
             return;
         }
+
         this.compTurn()
         // если все линии colored - > конец игры, выводим итог (Наташа)
         /*if(this.turnList.size === 0){
