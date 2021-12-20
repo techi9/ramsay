@@ -173,6 +173,7 @@ class Lvl5Game extends React.Component {
     }
 
     results = () => {
+        this.forceUpdate()
         if(this.state.userScore > this.state.compScore){
             this.setState({userWin: true})
             return;
@@ -238,6 +239,14 @@ class Lvl5Game extends React.Component {
             this.check(this.coloredList[index], this.state.compColor, true)
             //this.check(this.turnList[index], this.state.userColor, true)
         }
+
+        if(this.turnList.length === 0){
+            // ИГРА ЗАВЕРШИЛАСЬ -> ВЫВОДИМ РЕЗУЛЬТАТ
+            this.setState({game : false})
+            this.results()
+            return;
+        }
+
         this.setState({
             vertexList : this.vertexList,
             lineList: this.lineList
