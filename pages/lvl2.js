@@ -33,8 +33,10 @@ export default function lvl2(props) {
     const router = props.router
 
     return (
-        <div className={styles.textlvl2}>
+        <div>
             <SideBar selected = {3}/>
+        <div className={styles.textlvl2}>
+
             <font size={+7} color={"#646363"} face={"century schoolbook"}>
                 <strong>Теория Рамсея</strong>
             </font>
@@ -73,6 +75,7 @@ export default function lvl2(props) {
             </font>
             <Lvl2Game n = "7" getText = {GetText} />
             <input className={styles2.buttonNext} type="button" value="Продолжить"  onClick={() => router.push('/lvl3')}/>
+        </div>
         </div>
     )
 }

@@ -91,6 +91,12 @@
 
 }
 
+.buttonNext:hover{
+    border-radius: 20px;
+    color: #ffffff;
+    background: #575757;
+}
+
 .buttonLoose{
     min-width: 20%;
     font-size: 25px;
@@ -238,6 +244,12 @@ line-height: 1;
     transition: 200ms;
 }
 
+.buttonNext3:hover{
+    border-radius: 20px;
+    color: #ffffff;
+    background: #575757;
+}
+
 .buttonNext33{
     position: relative;
     bottom: 100px;
@@ -255,6 +267,12 @@ line-height: 1;
     height: 40px;
     float: right;
     transition: 200ms;
+}
+
+.buttonNext33:hover{
+    border-radius: 20px;
+    color: #ffffff;
+    background: #575757;
 }
 
 .lvl3{

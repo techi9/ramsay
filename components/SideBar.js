@@ -27,7 +27,7 @@ class SideBar extends React.Component {
             <div className={sidebar.sidebar}>
 
                 <div className={this.state.selected === 1 ? sidebar.selected : sidebar.unselect}>
-                    <Link href={"/"} >
+                    <Link href={"/lvl0"} >
                         <a onClick={() => this.setState({selected : 1})}>Введение</a>
                     </Link>
                 </div>

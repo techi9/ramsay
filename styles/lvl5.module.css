@@ -76,6 +76,12 @@
 
 }
 
+.buttonNext:hover{
+    border-radius: 20px;
+    color: #ffffff;
+    background: #575757;
+}
+
 .text1{
     /*position: absolute;*/
     /*right: 0;*/
