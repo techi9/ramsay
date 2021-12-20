@@ -1,0 +1,30 @@
+.content{
+    position: relative;
+    left: -8.5%;
+}
+
+.buttonStart{
+    min-width: 20%;
+    font-size: 25px;
+    font-family:"Alumni Sans",SansSerif;
+    font-weight: 600;
+    flex-grow: 1;
+    border: none;
+    border-radius: 6px;
+    color: #444444;
+    background: #e0e0e0;
+
+    height: 40px;
+    float: left;
+    transition: 200ms;
+
+    margin-top: 80px;
+}
+
+.buttonStart:hover{
+    border-radius: 10px;
+    transition: 200ms;
+    background: #646464;
+    color: #e0e0e0;
+
+}
