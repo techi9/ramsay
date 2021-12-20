@@ -15,7 +15,7 @@ class Lvl4Game extends React.Component {
 
     constructor(props) {
         super(props);
-        let radius = 20, xCenter = 110, yCenter = 60, n = this.props.n
+        let radius = 18, xCenter = 110, yCenter = 60, n = this.props.n
         this.list = graphGeneration(this.list, n, radius, xCenter, yCenter, this.handleClick)
         this.vertexList = this.list[0]
         this.lineList = this.list[1]

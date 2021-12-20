@@ -29,7 +29,7 @@ export default function lvl5(props) {
         <div>
             <SideBar selected = {6}/>
             <Lvl5Game n = "7" Text = {GetText}/>
-            <input className={lvl5s.buttonNext} type="button" value="Продолжить" onClick={() => router.push('/lvl6')}/>
+            <input className={lvl5s.buttonNext} type="button" value="Завершить" onClick={() => router.push('/')}/>
         </div>
     )
 }
