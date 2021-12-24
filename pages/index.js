@@ -2,6 +2,7 @@ import {useState} from "react";
 import {useRouter} from "next/router";
 import Scroll, {Element} from "react-scroll";
 import styles from "../styles/menu.module.css"
+import Main from "../components/main"
 
 export default function Home(props) {
 

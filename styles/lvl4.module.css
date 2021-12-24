@@ -23,9 +23,13 @@
 }
 
 .LooseWinContainer2{
-    margin-top: -0px;
-    margin-left: 180px;
-    margin-bottom: 110px;
+    position: relative;
+    top: -500px;
+    float: right;
+    margin-right: 23%;
+    margin-top: -15px;
+    margin-left: 0px;
+    margin-bottom: 0px;
 }
 
 .text1{

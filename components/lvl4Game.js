@@ -2,6 +2,7 @@ import React from "react";
 import Vertex from "./Vertex";
 import Line from "./Line";
 import styles from '../styles/colorSelector.module.css'
+import styles2 from '../styles/lvl4win.module.css'
 import graphGeneration from '/utility/graphGeneration'
 import shuffle from '/utility/shuffle'
 import lvl4 from "../styles/lvl4.module.css"
@@ -122,6 +123,7 @@ class Lvl4Game extends React.Component {
         if(((this.lineList[index].color === 'red') ? !this.checkRedTriangles(this.lineList[index]) : false) ||
             ((this.lineList[index].color === 'blue') ? this.check(this.lineList[index], "blue") : false)){
             this.setState({userLoose: true})
+            console.log("looooooose")
             return
         }
         else {
@@ -184,9 +186,9 @@ class Lvl4Game extends React.Component {
                         </font>
                         <div className={lvl4.colorselector}>
                             <input className={lvl4.buttonRed} type="button" value="  " onClick={this.handleClickRedButton}
-                                   style={{"border-color": this.state.curColor === "red" ? "#151414" : "#d51717" }}/>
+                                   style={{"border-color": this.state.userColor === "red" ? "#151414" : "#d51717" }}/>
                             <input className={lvl4.buttonBlue} type="button" value="  " onClick={this.handleClickBlueButton}
-                                   style={{"border-color": this.state.curColor === "blue" ? "#151414" : "#1776d5"}}/>
+                                   style={{"border-color": this.state.userColor === "blue" ? "#151414" : "#1776d5"}}/>
                         </div>
 
                         <input className={lvl4.buttonRetry2} src="/retryButton.png" type="image" onClick={this.retryButton}/>
@@ -195,7 +197,7 @@ class Lvl4Game extends React.Component {
                     <div className={lvl4.graph}>
 
 
-                        <svg viewBox="80 39 100 48" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="80 40 100 48" xmlns="http://www.w3.org/2000/svg">
                             {linesToRender}
                             {vertexesToRender}
                             {/*<rect width="100%" height="100%"/>*/}
@@ -204,8 +206,8 @@ class Lvl4Game extends React.Component {
                     </div>
 
                     <div className={lvl4.LooseWinContainer2}>
-                        {this.state.userWin ? <input className={styles.WinInf} type="button" value="Вы выиграли" /> : ''}
-                        {this.state.userLoose ?<input className={styles.LooseInf} type="button" value="Вы проиграли"/> : ''}
+                        {this.state.userWin ? <input className={styles2.WinInf} type="button" value="Вы выиграли" /> : ''}
+                        {this.state.userLoose ?<input className={styles2.LooseInf} type="button" value="Вы проиграли"/> : ''}
                     </div>
                 </div>
                 {/*<div className={lvl4.LooseWinContainer2}>*/}

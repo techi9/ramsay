@@ -198,6 +198,7 @@ class Lvl5Game extends React.Component {
             return;
         }
 
+
         this.lineList[index].line =
             <Line x1={this.lineList[index].x1} y1={this.lineList[index].y1} x2={this.lineList[index].x2} y2={this.lineList[index].y2}
                   onClick = {this.handleClick} vertex1 = {vertex1} vertex2 = {vertex2} color={this.state.userColor} index = {index}/>;
