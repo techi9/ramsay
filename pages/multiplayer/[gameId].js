@@ -29,7 +29,6 @@ export default function lobby(props)
 {
     return (
     <div>
-        <SideBar selected = '7'/>
         <MultiplayerGame n = "7" lobbyid = {props.prop} Text = {GetText}/>
     </div>)
 }
