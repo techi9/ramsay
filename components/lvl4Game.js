@@ -97,6 +97,10 @@ class Lvl4Game extends React.Component {
 
     handleClick = index => vertex1 => vertex2 =>  {
 
+        if(this.state.userLoose){
+            return
+        }
+
         if (this.state.userColor === this.lineList[index].color){
             return;
         }
@@ -122,6 +126,7 @@ class Lvl4Game extends React.Component {
         }
         else {
             this.setState({userLoose: false})
+
         }
         this.checkWin()
 
@@ -203,6 +208,10 @@ class Lvl4Game extends React.Component {
                         {this.state.userLoose ?<input className={styles.LooseInf} type="button" value="Вы проиграли"/> : ''}
                     </div>
                 </div>
+                {/*<div className={lvl4.LooseWinContainer2}>*/}
+                {/*    {this.state.userWin ? <input className={styles2.WinInf} type="button" value="Вы выиграли" /> : ''}*/}
+                {/*    {this.state.userLoose ?<input className={styles2.LooseInf} type="button" value="Вы проиграли"/> : ''}*/}
+                {/*</div>*/}
             </div>
 
         );

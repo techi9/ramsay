@@ -8,7 +8,7 @@ function GetText(){
     return (
         <p>
             <font size={+7} color={"#646363"} face={"century schoolbook"}>
-                <strong>Теоретичская справка</strong>
+                <strong>Теоретическая справка</strong>
             </font>
             <br/>
             <font size={+4} FACE={"century schoolbook"}>

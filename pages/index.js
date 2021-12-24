@@ -11,14 +11,19 @@ export default function Home(props) {
 
     return (
         <div className={styles.content}>
-            <br/>
-            <font size={+7} color={"#444444"} face={"century schoolbook"}>
-                <strong>Рамсеевская теория графов</strong>
-            </font>
-            <br/>
+            {/*<br/>*/}
+            {/*<font size={+7} color={"#444444"} face={"century schoolbook"}>*/}
+            {/*    <strong>Рамсеевская теория графов</strong>*/}
+            {/*</font>*/}
 
-            <input className={styles.buttonStart} type="button" value="Рамсеевская теория графов: теория и практика" onClick={() => router.push('/lvl0')}/>
+            {/*<div className={styles.buttons}>*/}
+            {/*<input className={styles.buttonStart} type="button" value="Рамсеевская теория графов: теория и практика" onClick={() => router.push('/lvl0')}/>*/}
 
+
+            {/*<input className={styles.buttonStart} type="button" value="кнопка" onClick={() => router.push('/create_multiplayer')}/>*/}
+            {/*</div>*/}
+
+            <Main router = {props.router}/>
 
         </div>
     )
