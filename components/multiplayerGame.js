@@ -182,12 +182,12 @@ class MultiplayerGame extends React.Component {
         this.forceUpdate()
         if(this.state.user1Score > this.state.user2Score){
             this.setState({user1Win: true})
-            alert('user1Win')
+
             return;
         }
         if(this.state.user1Score < this.state.user2Score){
             this.setState({user2Win: true, user1Loose: true})
-            alert('user2Win')
+
             return;
         }
         if(this.state.user1Score === this.state.user2Score){
