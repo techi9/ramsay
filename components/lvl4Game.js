@@ -193,6 +193,7 @@ class Lvl4Game extends React.Component {
 
                         <input className={lvl4.buttonRetry2} src="/retryButton.png" type="image" onClick={this.retryButton}/>
 
+
                     </div>
                     <div className={lvl4.graph}>
 
@@ -206,8 +207,8 @@ class Lvl4Game extends React.Component {
                     </div>
 
                     <div className={lvl4.LooseWinContainer2}>
-                        {this.state.userWin ? <input className={styles2.WinInf} type="button" value="Вы выиграли" /> : ''}
-                        {this.state.userLoose ?<input className={styles2.LooseInf} type="button" value="Вы проиграли"/> : ''}
+                        {this.state.userWin ? <input className={lvl4.WinInf} type="button" value="Вы выиграли" /> : ''}
+                        {this.state.userLoose ?<input className={lvl4.LooseInf} type="button" value="Вы проиграли"/> : ''}
                     </div>
                 </div>
                 {/*<div className={lvl4.LooseWinContainer2}>*/}

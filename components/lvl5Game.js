@@ -177,20 +177,18 @@ class Lvl5Game extends React.Component {
     }
 
     results = () => {
-        alert(this.userScore + '    ' + this.compScore)
+
         if(this.userScore > this.compScore){
             this.setState({userWin: true})
-            alert('Победа')
             return;
         }
         if(this.userScore < this.compScore){
             this.setState({userLoose: true})
-            alert("Loose")
+
             return;
         }
         if(this.userScore === this.compScore){
             this.setState({deadHeat: true})
-            alert("Dead heat")
         }
     }
 
@@ -280,7 +278,9 @@ class Lvl5Game extends React.Component {
             userWin: false,
             userLoose: false,
             compScore: 0,
-            userScore: 0
+            userScore: 0,
+            deadHeat : false
+
         })
 
         this.userScore = 0
@@ -323,7 +323,7 @@ class Lvl5Game extends React.Component {
                     {this.state.userWin ? <input className={styles.WinInf} type="button" value="Вы выиграли" /> : ''}
                     {this.state.userLoose ?<input className={styles.LooseInf} type="button" value="Вы проиграли"/> : ''}
                     {this.state.deadHeat ?<input className={styles.DrawInf} type="button" value="Ничья"/> : ''}
-                    <input className={styles.DrawInf} type="button" value="Ничья"/>
+
                 </div>
 
             </div>
