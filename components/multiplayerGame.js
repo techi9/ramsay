@@ -7,6 +7,9 @@ import Popup from 'reactjs-popup'
 import lvl5 from "../styles/lvl5.module.css"
 import multi from "../styles/multi.module.css"
 import Pusher from "pusher-js";
+import {Spinner} from "react-bootstrap"
+import Link from "next/link";
+
 
 
 class MultiplayerGame extends React.Component {
@@ -45,16 +48,59 @@ class MultiplayerGame extends React.Component {
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+
+
+        const unloadCallback = (event) => {
+            this.leave()
+            event.preventDefault();
+            event.returnValue = "";
+            return "";
+        };
+
+        window.addEventListener("beforeunload", unloadCallback);
+
+
         this.pusher = new Pusher('ec8157dfc2c6e38904fa', {
             cluster: 'eu'
         });
 
-        console.log('start  ')
+        setTimeout(()=>{this.setState({startGame: false})}, 100)
 
         let obj = this
 
         this.channel = this.pusher.subscribe(this.lobbyid);
+
+        const response = await fetch('/api/numOfPlayers', {
+            method: 'POST',
+            body: JSON.stringify({action: "join", lobbyid: this.lobbyid}),
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }).then(data => data.json()).then(
+            data => {
+
+                if(data.num ===2){
+                    setTimeout(() => obj.setState({startGame: true}), 200)
+                }
+                obj.player = data.num
+            }
+        )
+
+
+
+
+        this.channel.bind('join', function (data){
+            if(data.num === 2){
+                // setTimeout(() => obj.setState({startGame: true}), 200)
+                obj.setState({startGame: true})
+            }
+
+        });
+
+        this.channel.bind('left', function (data){
+            obj.props.router.push('/')
+        });
 
         this.channel.bind('event', function(data) {
             //общий
@@ -103,9 +149,8 @@ class MultiplayerGame extends React.Component {
 
             }
 
-            this.player = 0
-            this.firstTurn = true
-            this.firstPlayerTurn = true
+
+
             this.current_player = 1
 
 
@@ -119,16 +164,29 @@ class MultiplayerGame extends React.Component {
                 deadHeat: false,
                 user1Score: 0,
                 user2Score: 0,
-                currentPlayer: 0
+                currentPlayer: 1
             })
 
         });
 
 
+
+        return () => window.removeEventListener("beforeunload", unloadCallback);
     }
 
     componentWillUnmount() {
         this.leave()
+    }
+
+    leave = () =>{
+        this.channel.unsubscribe()
+        const response = fetch('/api/numOfPlayers', {
+            method: 'POST',
+            body: JSON.stringify({action: "left", lobbyid: this.lobbyid}),
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        })
     }
 
     checkColor = (v1, v2, color) => {

@@ -3,7 +3,7 @@ import Link from "next/link";
 import SideBar from "../components/SideBar"
 import {useRouter} from "next/router";
 import Head from "next/head";
-
+import 'bootstrap/dist/css/bootstrap.css'
 
 
 function MyApp({ Component, pageProps }) {
@@ -16,6 +16,8 @@ function MyApp({ Component, pageProps }) {
               <title>Ramsay</title>
               <meta name="description" content="SoulsLikeRiddles" />
               <link rel="icon" href="/favicon.ico" />
+
+
 
           </Head>
 

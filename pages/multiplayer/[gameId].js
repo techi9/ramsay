@@ -29,7 +29,7 @@ export default function lobby(props)
 {
     return (
     <div>
-        <MultiplayerGame n = "7" lobbyid = {props.prop} Text = {GetText}/>
+        <MultiplayerGame n = "7" lobbyid = {props.prop} Text = {GetText} router = {props.router}/>
     </div>)
 }
 
