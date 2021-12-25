@@ -22,6 +22,7 @@ class MultiplayerGame extends React.Component {
         super(props);
         console.log("constructor")
         this.lobbyid = this.props.lobbyid
+        this.lock = false
 
         let radius = 20, xCenter = 110, yCenter = 60, n = this.props.n
         this.list = graphGeneration(this.list, n, radius, xCenter, yCenter, this.handleClick)
@@ -62,7 +63,7 @@ class MultiplayerGame extends React.Component {
         window.addEventListener("beforeunload", unloadCallback);
 
 
-        this.pusher = new Pusher('ec8157dfc2c6e38904fa', {
+        this.pusher = new Pusher(process.env.key, {
             cluster: 'eu'
         });
 
@@ -262,6 +263,15 @@ class MultiplayerGame extends React.Component {
         if (this.lineList[index].color !== 'gray'){
             return;
         }
+
+        if (this.lock) {
+            return;
+        }
+
+        this.lock = true
+        setTimeout(()=>{
+            this.lock = false
+        }, 500)
 
         // if(this.firstTurn && this.player === 0){
         //     this.player = 1
