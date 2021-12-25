@@ -7,11 +7,11 @@ function GetText(){
 
     return (
         <div>
-            <font size={+5} color={"#646363"} face={"century schoolbook"}>
+            <font size={+6} color={"#646363"} face={"century schoolbook"}>
                 <strong>Правила игры</strong>
             </font>
             <br/>
-            <font size={+4} FACE={"century schoolbook"}>
+            <font size={+5} FACE={"century schoolbook"}>
                 Выигрывает игрок, который построил большее количество
                 одноцветных треугольников.
             </font>

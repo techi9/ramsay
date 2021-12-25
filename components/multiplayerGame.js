@@ -3,7 +3,7 @@ import Vertex from "./Vertex";
 import Line from "./Line";
 import styles from '../styles/colorSelector.module.css'
 import graphGeneration from '/utility/graphGeneration'
-import shuffle from '/utility/shuffle'
+import Popup from 'reactjs-popup'
 import lvl5 from "../styles/lvl5.module.css"
 import multi from "../styles/multi.module.css"
 import Pusher from "pusher-js";
@@ -40,6 +40,8 @@ class MultiplayerGame extends React.Component {
             user2Loose: false,
             deadHeat: false,
             game: true,
+            startGame: true,
+            currentPlayer: 1
         }
     }
 
@@ -57,11 +59,6 @@ class MultiplayerGame extends React.Component {
         this.channel.bind('event', function(data) {
             //общий
             //data.index
-
-
-            if (obj.firstTurn && obj.player ===0 && !obj.myTurn){
-                obj.player = 2
-            }
 
             if(obj.current_player === 1){
                 obj.current_player = 2
@@ -131,7 +128,7 @@ class MultiplayerGame extends React.Component {
     }
 
     componentWillUnmount() {
-        this.channel.unsubscribe()
+        this.leave()
     }
 
     checkColor = (v1, v2, color) => {
@@ -207,10 +204,10 @@ class MultiplayerGame extends React.Component {
             return;
         }
 
-        if(this.firstTurn && this.player === 0){
-            this.player = 1
-            this.firstTurn = false
-        }
+        // if(this.firstTurn && this.player === 0){
+        //     this.player = 1
+        //     this.firstTurn = false
+        // }
 
         if(this.current_player !== this.player){
             return;
@@ -253,6 +250,7 @@ class MultiplayerGame extends React.Component {
 
         console.log("Current = " + this.state.currentPlayer)
 
+
         return (
             <div>
             <div className={lvl5.content}>
@@ -291,6 +289,16 @@ class MultiplayerGame extends React.Component {
 
 
                 </div>
+
+                <Popup open={!this.state.startGame} closeOnDocumentClick={false}>
+                    <div className={styles.popup}>
+                        <div className={styles.popupEl}>
+                            Ожидание второго игрока...
+                            <Spinner animation="border" style={{marginLeft: '10px'}} />
+                        </div>
+
+                    </div>
+                </Popup>
 
             </div>
             </div>
