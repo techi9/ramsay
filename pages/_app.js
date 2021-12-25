@@ -3,7 +3,7 @@ import Link from "next/link";
 import SideBar from "../components/SideBar"
 import {useRouter} from "next/router";
 import Head from "next/head";
-import 'bootstrap/dist/css/bootstrap.css'
+
 
 
 function MyApp({ Component, pageProps }) {
