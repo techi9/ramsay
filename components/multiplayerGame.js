@@ -58,7 +58,7 @@ class MultiplayerGame extends React.Component {
         window.addEventListener("beforeunload", unloadCallback);
 
 
-        this.pusher = new Pusher(process.env.key, {
+        this.pusher = new Pusher("da352212d402981abedf", {
             cluster: 'eu'
         });
 
