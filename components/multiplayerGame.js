@@ -10,9 +10,6 @@ import Pusher from "pusher-js";
 import {Spinner} from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.css'
 
-
-
-
 class MultiplayerGame extends React.Component {
     vertexList = []
     lineList = []
@@ -51,8 +48,6 @@ class MultiplayerGame extends React.Component {
     }
 
     async componentDidMount() {
-
-
         const unloadCallback = (event) => {
             this.leave()
             event.preventDefault();
@@ -284,10 +279,6 @@ class MultiplayerGame extends React.Component {
 
         this.myTurn = true
 
-        // this.sendPusher.trigger(this.lobbyid, "event", {
-        //     index: index
-        // });
-
         const response = fetch('/api/turn', {
             method: 'POST',
             body: JSON.stringify({index: index, lobbyid: this.lobbyid}),
@@ -316,10 +307,6 @@ class MultiplayerGame extends React.Component {
 
         let linesToRender = []
         this.state.lineList.forEach(element => linesToRender.push(element.line))
-
-        console.log("Current = " + this.state.currentPlayer)
-
-
         return (
             <div>
             <div className={lvl5.content}>
