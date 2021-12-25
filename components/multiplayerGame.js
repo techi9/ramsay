@@ -120,7 +120,6 @@ class MultiplayerGame extends React.Component {
                 <Line x1={obj.lineList[data.index].x1} y1={obj.lineList[data.index].y1} x2={obj.lineList[data.index].x2} y2={obj.lineList[data.index].y2}
                       onClick = {obj.handleClick} vertex1 = {obj.lineList[data.index].vertex1} vertex2 = {obj.lineList[data.index].vertex2} color={obj.current_player === 1 ? obj.state.user1Color : obj.state.user2Color} index = {data.index}/>;
 
-            //     obj.lineList[data.index].color = obj.player === 1 ? obj.state.user1Color : obj.state.user2Color
                 obj.lineList[data.index].color = obj.current_player === 1 ? obj.state.user1Color : obj.state.user2Color
 
             obj.check(obj.lineList[data.index], obj.lineList[data.index].color, true)
@@ -255,6 +254,7 @@ class MultiplayerGame extends React.Component {
 
 
     handleClick = index => vertex1 => vertex2 => {
+
 
         if (this.state.userColor === this.lineList[index].color){
             return;
