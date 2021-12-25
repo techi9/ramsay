@@ -43,7 +43,6 @@ const tiers = [
         // subheader: 'Most popular',
         description: [
             'У Вас есть возможность сыграть в игру со своим другом',
-
         ],
         buttonText: 'Создать лобби',
         buttonVariant: 'outlined',

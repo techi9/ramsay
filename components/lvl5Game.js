@@ -63,6 +63,7 @@ class Lvl5Game extends React.Component {
             else if (color === this.state.compColor){
                 let t = this.state.compScore
                 this.setState({compScore : t + count})
+                this.compScore = t +count
             }
         }
 
@@ -173,17 +174,19 @@ class Lvl5Game extends React.Component {
     }
 
     results = () => {
-        this.forceUpdate()
-        if(this.state.userScore > this.state.compScore){
+        alert(this.userScore + '    ' + this.compScore)
+        if(this.userScore > this.compScore){
             this.setState({userWin: true})
             return;
         }
-        if(this.state.userScore < this.state.compScore){
+        if(this.userScore < this.compScore){
             this.setState({userLoose: true})
+            alert("Loose")
             return;
         }
-        if(this.state.userScore === this.state.compScore){
+        if(this.userScore === this.compScore){
             this.setState({deadHeat: true})
+            alert("Dead heat")
         }
     }
 
