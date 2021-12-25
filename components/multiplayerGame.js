@@ -84,9 +84,6 @@ class MultiplayerGame extends React.Component {
             }
         )
 
-
-
-
         this.channel.bind('join', function (data){
             if(data.num === 2){
                 // setTimeout(() => obj.setState({startGame: true}), 200)
