@@ -8,7 +8,8 @@ import lvl5 from "../styles/lvl5.module.css"
 import multi from "../styles/multi.module.css"
 import Pusher from "pusher-js";
 import {Spinner} from "react-bootstrap"
-import Link from "next/link";
+import 'bootstrap/dist/css/bootstrap.css'
+
 
 
 
