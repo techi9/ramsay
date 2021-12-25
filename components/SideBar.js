@@ -63,6 +63,12 @@ class SideBar extends React.Component {
                     </Link>
                 </div>
 
+                <div className={this.state.selected === 99 ? sidebar.selected : sidebar.unselect}>
+                    <Link href={"/"}>
+                        <a onClick={() => this.setState({selected : 99})}>Вернуться в меню</a>
+                    </Link>
+                </div>
+
 
             </div>
         );

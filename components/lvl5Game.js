@@ -20,6 +20,8 @@ class Lvl5Game extends React.Component {
         this.list = graphGeneration(this.list, n, radius, xCenter, yCenter, this.handleClick)
         this.vertexList = this.list[0]
         this.lineList = this.list[1]
+        this.userScore = 0
+        this.compScore = 0
 
         this.state = {
             vertexList : this.vertexList,
@@ -59,6 +61,7 @@ class Lvl5Game extends React.Component {
             if(color === this.state.userColor){
                 let t = this.state.userScore
                 this.setState({userScore : t + count})
+                this.userScore = t + count
             }
             else if (color === this.state.compColor){
                 let t = this.state.compScore
@@ -177,6 +180,7 @@ class Lvl5Game extends React.Component {
         alert(this.userScore + '    ' + this.compScore)
         if(this.userScore > this.compScore){
             this.setState({userWin: true})
+            alert('Победа')
             return;
         }
         if(this.userScore < this.compScore){
@@ -279,6 +283,9 @@ class Lvl5Game extends React.Component {
             userScore: 0
         })
 
+        this.userScore = 0
+        this.compScore = 0
+
 
     }
 
@@ -315,7 +322,8 @@ class Lvl5Game extends React.Component {
                 <div className={lvl5.LooseWinContainer2}>
                     {this.state.userWin ? <input className={styles.WinInf} type="button" value="Вы выиграли" /> : ''}
                     {this.state.userLoose ?<input className={styles.LooseInf} type="button" value="Вы проиграли"/> : ''}
-                    {this.state.deadHeat ?<input className={styles.LooseInf} type="button" value="Ничья"/> : ''}
+                    {this.state.deadHeat ?<input className={styles.DrawInf} type="button" value="Ничья"/> : ''}
+                    <input className={styles.DrawInf} type="button" value="Ничья"/>
                 </div>
 
             </div>

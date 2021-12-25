@@ -156,7 +156,7 @@ class Lv1Game extends React.Component {
                 <div className={styles.rules}>
                     {this.props.text()}
                     <input className={styles.buttonRetry} src="/retryButton.png" type="image" onClick={this.retryButton}/>
-                    {this.props.withGiveUpButton ? <input className={styles.buttonLoose} type="button" value="посмотреть решение"
+                    {this.props.withGiveUpButton ? <input className={styles.buttonGiveUp} type="button" value="Посмотреть решение"
                             onClick={this.showGiveUpInfo}/> : ''}
                 </div>
                 <div className={styles.winNLooseText}>

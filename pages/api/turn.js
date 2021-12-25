@@ -8,8 +8,12 @@ const pusher = new Pusher({
     useTLS: true
 });
 
+
+
 export default async function handler(req, res)
 {
+
+
     await pusher.trigger(req.body.lobbyid, "event", {
         index: req.body.index
     });
