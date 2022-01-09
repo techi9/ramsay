@@ -15,8 +15,9 @@ function MyApp({ Component, pageProps }) {
           <Head>
               <title>Ramsay</title>
               <meta name="description" content="SoulsLikeRiddles" />
+              <meta name="google-site-verification" content="GrluTaJ8JkpKMlhlsAJSLxNfGzmqft_FFBitZfUgWhk" />
               <link rel="icon" href="/favicon.ico" />
-
+              
 
 
           </Head>
